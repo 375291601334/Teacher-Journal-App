@@ -2,11 +2,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppComponent } from './root/app.component';
+import { StudentsComponent } from './components/students/students.component';
+import { SubjectsComponent } from './components/subjects/subjects.component';
+import { StatisticsComponent } from './components/statistics/statistics.component';
+import { ExportComponent } from './components/export/export.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    StudentsComponent,
+    SubjectsComponent,
+    StatisticsComponent,
+    ExportComponent
   ],
   imports: [
     BrowserModule,
