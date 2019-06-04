@@ -2,12 +2,13 @@
   List of subjects:
 </h2>
 
-<div>
-  <div *ngFor='let subject of subjects' >
-    {{subject.name}}
+<div class='subjects-container'>
+  <div class='subject-item' *ngFor='let subject of subjects'>
+    <a [routerLink]="['/subjects', subject.name]" >{{subject.name}}</a>
   </div>
 </div>
 
-<button>
-  <a routerLink="/subjects/new">Add+</a>
-</button>
+<a routerLink="/subjects/new">
+  <app-button></app-button>
+</a>
+
