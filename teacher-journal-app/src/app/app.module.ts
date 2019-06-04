@@ -3,18 +3,26 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './root/app.component';
-import { StudentsComponent } from './components/students/students.component';
-import { SubjectsComponent } from './components/subjects/subjects.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { ExportComponent } from './components/export/export.component';
+import { StudentFormComponent } from './components/students/student-form/student-form.component';
+import { StudentsTableComponent } from './components/students/student-page/students-table/students-table.component';
+import { SubjectFormComponent } from './components/subjects/subject-form/subject-form.component';
+import { SubjectPageComponent } from './components/subjects/subject-page/subject-page.component';
+import { SubjectTableComponent } from './components/subjects/subject-page/subject-table/subject-table.component';
+import { StudentPageComponent } from './components/students/student-page/student-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StudentsComponent,
-    SubjectsComponent,
     StatisticsComponent,
-    ExportComponent
+    ExportComponent,
+    StudentFormComponent,
+    StudentsTableComponent,
+    SubjectFormComponent,
+    SubjectPageComponent,
+    SubjectTableComponent,
+    StudentPageComponent
   ],
   imports: [
     BrowserModule,

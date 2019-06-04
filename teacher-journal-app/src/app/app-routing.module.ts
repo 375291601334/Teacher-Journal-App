@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { StudentsComponent } from './components/students/students.component';
-import { SubjectsComponent } from './components/subjects/subjects.component';
+import { StudentPageComponent } from './components/students/student-page/student-page.component';
+import { StudentFormComponent } from './components/students/student-form/student-form.component';
+import { SubjectPageComponent } from './components/subjects/subject-page/subject-page.component';
+import { SubjectFormComponent } from './components/subjects/subject-form/subject-form.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { ExportComponent } from './components/export/export.component';
 
 const routes: Routes = [
-  { path: 'students', component: StudentsComponent },
-  { path: 'subjects', component: SubjectsComponent },
+  { path: 'students', component: StudentPageComponent },
+  { path: 'students/new', component: StudentFormComponent },
+  { path: 'subjects', component: SubjectPageComponent },
+  { path: 'subjects/new', component: SubjectFormComponent },
   { path: 'statistics', component: StatisticsComponent },
   { path: 'export', component: ExportComponent },
 ];
