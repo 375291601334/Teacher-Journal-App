@@ -1,8 +1,13 @@
-<div>
-  <p>Students</p>
-  <p>Subjects</p>
-</div>
+<div class='container'>
+  <div class='left-column'>
+    <nav>
+      <a [routerLink]="['students']" routerLinkActive="active">Students</a>
+      <a [routerLink]="['subjects']" routerLinkActive="active">Subjects</a>
+    </nav>
+    <router-outlet></router-outlet>
+  </div>
 
-<div>
-
+  <div class='right-column'> 
+    
+  </div>
 </div>

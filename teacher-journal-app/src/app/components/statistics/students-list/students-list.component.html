@@ -1,0 +1,8 @@
+<div 
+*ngFor='let student of students'
+[routerLink]="[student.name.last+'_'+student.name.first]" 
+routerLinkActive="active">
+  <p>{{student.name.last}} {{student.name.first}}</p>
+</div>
+
+<router-outlet></router-outlet>

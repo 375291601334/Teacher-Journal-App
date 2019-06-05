@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { DataService } from '../../../../common/services/data.service';
 
 @Component({
   selector: 'app-students-table',
@@ -6,8 +7,11 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./students-table.component.less']
 })
 export class StudentsTableComponent implements OnInit {
-  @Input() students;
-  constructor() { }
+  students;
+  
+  constructor(private dataService: DataService) { 
+    this.students = this.dataService.getStudents();
+  }
 
   ngOnInit() {
   }

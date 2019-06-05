@@ -6,10 +6,17 @@
   </thead>
   <tbody>
     <tr *ngFor="let student of students">
-      <td>{{student.id}}</td>
       <td>{{student.name.first}}</td>
       <td>{{student.name.last}}</td>
-      <td>{{student.address}}</td>
+      <td
+      *ngFor='let subject of student.subjects'>
+      <div *ngIf='subject.name==="Math"'>
+        {{subject.marks['04/02']}}
+      </div>
+      </td>
     </tr>
   </tbody>
 </table>
+
+<label>Teacher:</label> <input type="text">
+<button>Save</button>

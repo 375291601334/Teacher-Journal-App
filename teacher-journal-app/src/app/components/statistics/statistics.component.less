@@ -1,0 +1,36 @@
+@import '../../../styles/variables.less';
+
+.left-column {
+    display: inline-block;
+    width: 40%;
+    margin: 0;
+    padding: 0;
+    border: 3px solid @font-color;
+}
+
+.right-column {
+    display: inline-block;
+    width: 50%;
+    border: 3px solid @font-color;
+}
+
+.tab {
+    display: inline-block;
+    width: 46%;
+    border: 3px solid @font-color;
+}
+
+nav {
+    display: flex;
+}
+
+a {
+    flex-grow: 1;
+    color: @font-color;
+    padding: 10px 20px;
+    border: 3px solid @font-color;
+}
+
+.active {
+    color: @acsent-color;
+}

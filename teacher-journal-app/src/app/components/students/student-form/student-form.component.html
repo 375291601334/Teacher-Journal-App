@@ -2,18 +2,26 @@
   Add new student:
 </h2>
 
-<form>
-  <label>*Name:</label>
-  <input type="text">
+<form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label>*Name:</label>
+    <input type="text" formControlName="firstName" required>
+  </div>
 
-  <label>*Last name:</label>
-  <input type="text">
+  <div class="form-group">
+    <label>*Last name:</label>
+    <input type="text" formControlName="lastName" required>
+  </div>
 
-  <label>Address:</label>
-  <input type="text">
+  <div class="form-group">
+    <label>Address:</label>
+    <input type="text" formControlName="address">
+  </div>
 
-  <label>Description:</label>
-  <input type="text">
+  <div class="form-group">
+    <label>Description:</label>
+    <textarea formControlName="description"></textarea>
+  </div>
 
-  <input type="submit" text="Add">
+  <input type="submit" [disabled]="!studentForm.valid" value='Add'>
 </form>

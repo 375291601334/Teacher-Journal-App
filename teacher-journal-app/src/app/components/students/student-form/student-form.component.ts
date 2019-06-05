@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { DataService } from '../../../common/services/data.service';
 
 @Component({
   selector: 'app-student-form',
@@ -6,10 +8,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./student-form.component.less']
 })
 export class StudentFormComponent implements OnInit {
+  studentForm: FormGroup;
 
-  constructor() { }
+  constructor(private dataService: DataService,
+    private fb: FormBuilder) { 
+  }
 
   ngOnInit() {
+    this.studentForm = this.fb.group({
+      firstName: '',
+      lastName: '',
+      address: '',
+      description: ''
+    });
+  }
+
+  onSubmit() {
+    let newStudent = {
+      id: this.dataService.getStudents().length, 
+      name: {
+        first: this.studentForm.value.firstName,
+        last: this.studentForm.value.lastName
+      },
+      address: this.studentForm.value.address,
+      description: this.studentForm.value.description
+    };
+
+    console.warn(this.studentForm.value);
+    this.dataService.addStudent(newStudent);
   }
 
 }
