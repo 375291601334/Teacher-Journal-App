@@ -1,16 +1,20 @@
 @import '../../../styles/variables.less';
 
+.container {
+    display: flex;
+}
+
 .left-column {
-    display: inline-block;
-    width: 40%;
+    flex-grow: 1;
     margin: 0;
     padding: 0;
     border: 3px solid @font-color;
 }
 
 .right-column {
-    display: inline-block;
-    width: 50%;
+    flex-grow: 4;
+    margin: 0;
+    padding: 0;
     border: 3px solid @font-color;
 }
 

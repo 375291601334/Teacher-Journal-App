@@ -3,20 +3,27 @@
     <td>Name</td>
     <td>Last Name</td>
     <td>Average Mark</td>
+    <td>04/02</td>
+    <td>05/02</td>
+    <td>06/02</td>
+    <td>07/02</td>
   </thead>
   <tbody>
     <tr *ngFor="let student of students">
       <td>{{student.name.first}}</td>
       <td>{{student.name.last}}</td>
-      <td
-      *ngFor='let subject of student.subjects'>
-      <div *ngIf='subject.name==="Math"'>
-        {{subject.marks['04/02']}}
-      </div>
-      </td>
+      <td>{{student.averageMark}}</td>
+      <td><input type="text" [value]="[student.subjects[subjectName]['04/02']]"></td>
+      <td><input type="text" [value]="[student.subjects[subjectName]['05/02']]"></td>
+      <td><input type="text" [value]="[student.subjects[subjectName]['06/02']]"></td>
+      <td><input type="text" [value]="[student.subjects[subjectName]['07/02']]"></td>
     </tr>
   </tbody>
 </table>
 
-<label>Teacher:</label> <input type="text">
+<div>
+  <label>Teacher:</label>
+  <input type="text" [value]="[subjects[subjectId].teacher]">
+</div>
+
 <button>Save</button>

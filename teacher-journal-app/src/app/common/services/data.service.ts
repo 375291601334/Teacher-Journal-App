@@ -16,44 +16,23 @@ export class DataService {
       },
       "address": "401 Albee Square, Hillsboro, Connecticut, 4642",
       "description": "Ea duis ea culpa ullamco consequat enim aliquip aliqua reprehenderit sunt. Elit proident cillum proident aute quis. Esse nulla non do qui nostrud aliquip ut Lorem officia culpa ipsum. Labore ex fugiat exercitation nisi laboris.",
-      "subjects": [
-        {
-          "name": "Math",
-          "marks": {
-            "04/02": 8,
-            "05/02": 2,
-            "06/02": 4,
-            "07/02": 3
-          }
+      "subjects": {
+        "Math":{
+          "04/02": 8,
+          "07/02": 3
         },
-        {
-          "name": "English",
-          "marks": {
-            "04/02": 3,
-            "05/02": 9,
-            "06/02": 6,
-            "07/02": 6
-          }
+        "English": {
+          "05/02": 9,
+          "06/02": 6,
+          "07/02": 6
         },
-        {
-          "name": "Biology",
-          "marks": {
+        "Biology": {
             "04/02": 6,
-            "05/02": 1,
-            "06/02": 5,
-            "07/02": 0
-          }
         },
-        {
-          "name": "Chemistry",
-          "marks": {
+        "Chemistry": {
             "04/02": 2,
-            "05/02": 0,
-            "06/02": 0,
-            "07/02": 1
-          }
         }
-      ]
+      }
     },
     {
       "id": 1,
@@ -63,44 +42,27 @@ export class DataService {
       },
       "address": "645 Cranberry Street, Cherokee, Wisconsin, 1975",
       "description": "Non minim laboris labore dolore duis veniam. Consequat et excepteur labore laboris adipisicing duis nulla officia mollit ipsum elit. Occaecat laborum proident labore quis pariatur sunt aliqua cillum aliqua ipsum sunt excepteur enim. Adipisicing eiusmod dolor ullamco mollit nisi. Proident officia ad adipisicing in enim eiusmod sunt Lorem aliquip consectetur. Quis fugiat reprehenderit velit ullamco fugiat. Ex consectetur nulla ullamco consequat exercitation veniam aliquip nulla.",
-      "subjects": [
-        {
-          "name": "Math",
-          "marks": {
-            "04/02": 2,
-            "05/02": 8,
-            "06/02": 8,
-            "07/02": 9
-          }
+      "subjects": {
+        "Math": {
+          "05/02": 8,
+          "06/02": 8,
+          "07/02": 9
         },
-        {
-          "name": "English",
-          "marks": {
-            "04/02": 1,
-            "05/02": 2,
-            "06/02": 10,
-            "07/02": 4
-          }
+        "English": {
+          "04/02": 1,
+          "06/02": 10,
+          "07/02": 4
         },
-        {
-          "name": "Biology",
-          "marks": {
-            "04/02": 8,
-            "05/02": 3,
-            "06/02": 4,
-            "07/02": 4
-          }
-        },
-        {
-          "name": "Chemistry",
-          "marks": {
-            "04/02": 6,
-            "05/02": 6,
-            "06/02": 10,
-            "07/02": 7
-          }
+        "Biology": {
+          "04/02": 8,
+          "05/02": 3,
+          },
+        "Chemistry": {
+          "04/02": 6,
+          "05/02": 6,
+          "06/02": 10,
         }
-      ]
+      }
     },
     {
       "id": 2,
@@ -110,44 +72,26 @@ export class DataService {
       },
       "address": "389 Tampa Court, Coultervillle, South Dakota, 5335",
       "description": "Sunt proident officia occaecat nulla do veniam dolore enim in. Incididunt adipisicing tempor quis aliqua. Anim velit laborum irure magna enim exercitation magna do voluptate. Qui est dolore do est incididunt qui sit commodo nostrud magna in fugiat sint. Consectetur eu aliqua sit aliqua aliqua consectetur veniam tempor consectetur Lorem.",
-      "subjects": [
-        {
-          "name": "Math",
-          "marks": {
-            "04/02": 6,
-            "05/02": 5,
-            "06/02": 6,
-            "07/02": 8
-          }
+      "subjects": {
+        "Math": {
+          "06/02": 6,
+          "07/02": 8
         },
-        {
-          "name": "English",
-          "marks": {
-            "04/02": 6,
-            "05/02": 3,
-            "06/02": 4,
-            "07/02": 4
-          }
+        "English": {
+          "06/02": 4,
+          "07/02": 4
         },
-        {
-          "name": "Biology",
-          "marks": {
-            "04/02": 10,
-            "05/02": 5,
-            "06/02": 5,
-            "07/02": 3
-          }
+        "Biology": {
+          "04/02": 10,
+          "05/02": 5,
+          "07/02": 3
         },
-        {
-          "name": "Chemistry",
-          "marks": {
-            "04/02": 0,
-            "05/02": 6,
-            "06/02": 10,
-            "07/02": 1
-          }
+        "Chemistry": {
+          "05/02": 6,
+          "06/02": 10,
+          "07/02": 1
         }
-      ]
+      }
     },
     {
       "id": 3,
@@ -157,44 +101,26 @@ export class DataService {
       },
       "address": "647 Garden Street, Cassel, North Dakota, 1519",
       "description": "Voluptate est id occaecat laborum culpa. Veniam sunt Lorem voluptate adipisicing dolor elit. Sunt sunt aliquip sit nisi nisi ullamco voluptate id exercitation non. Dolore et mollit velit exercitation incididunt elit id tempor irure ut sit incididunt sit. Ut non mollit qui velit in Lorem consectetur voluptate culpa cillum cillum cillum consectetur adipisicing.",
-      "subjects": [
-        {
-          "name": "Math",
-          "marks": {
-            "04/02": 3,
-            "05/02": 6,
-            "06/02": 9,
-            "07/02": 9
-          }
+      "subjects": {
+        "Math": {
+          "04/02": 3,
+          "06/02": 9,
+          "07/02": 9
         },
-        {
-          "name": "English",
-          "marks": {
-            "04/02": 5,
-            "05/02": 4,
-            "06/02": 0,
-            "07/02": 0
-          }
+        "English": {
+          "04/02": 5,
+          "05/02": 4,
         },
-        {
-          "name": "Biology",
-          "marks": {
-            "04/02": 1,
-            "05/02": 2,
-            "06/02": 7,
-            "07/02": 10
-          }
+        "Biology": {
+          "06/02": 7,
+          "07/02": 10
         },
-        {
-          "name": "Chemistry",
-          "marks": {
-            "04/02": 6,
-            "05/02": 5,
-            "06/02": 5,
-            "07/02": 3
-          }
+        "Chemistry": {
+          "04/02": 6,
+          "05/02": 5,
+          "06/02": 5,
         }
-      ]
+      }
     },
     {
       "id": 4,
@@ -204,44 +130,29 @@ export class DataService {
       },
       "address": "545 Remsen Avenue, Berlin, Nevada, 6758",
       "description": "In ipsum deserunt mollit enim ullamco consectetur laborum officia. Aute Lorem ad fugiat nisi cupidatat cillum labore elit laboris. Voluptate nisi fugiat aute ad cupidatat consectetur eu.",
-      "subjects": [
-        {
-          "name": "Math",
-          "marks": {
-            "04/02": 7,
-            "05/02": 2,
-            "06/02": 6,
-            "07/02": 2
-          }
+      "subjects": {
+        "Math": {
+          "04/02": 7,
+          "06/02": 6,
         },
-        {
-          "name": "English",
-          "marks": {
-            "04/02": 3,
-            "05/02": 3,
-            "06/02": 8,
-            "07/02": 5
-          }
+        "English": {
+          "04/02": 3,
+          "05/02": 3,
+          "06/02": 8,
+          "07/02": 5
         },
-        {
-          "name": "Biology",
-          "marks": {
-            "04/02": 7,
-            "05/02": 5,
-            "06/02": 2,
-            "07/02": 3
-          }
+        "Biology": {
+          "04/02": 7,
+          "05/02": 5,
+          "07/02": 3
         },
-        {
-          "name": "Chemistry",
-          "marks": {
-            "04/02": 9,
-            "05/02": 3,
-            "06/02": 6,
-            "07/02": 3
-          }
+        "Chemistry": {
+          "04/02": 9,
+          "05/02": 3,
+          "06/02": 6,
+          "07/02": 3
         }
-      ]
+      }
     },
     {
       "id": 5,
@@ -251,44 +162,24 @@ export class DataService {
       },
       "address": "894 Pioneer Street, Holtville, Missouri, 7662",
       "description": "Consequat nostrud laboris exercitation consectetur enim ea ipsum Lorem. Veniam consequat deserunt laboris officia ex excepteur officia est cillum consectetur. Veniam sunt exercitation pariatur deserunt consequat pariatur labore sunt amet id. Veniam consectetur occaecat excepteur Lorem sunt ex proident nulla ad quis amet aliquip aute ad.",
-      "subjects": [
-        {
-          "name": "Math",
-          "marks": {
-            "04/02": 3,
-            "05/02": 2,
-            "06/02": 5,
-            "07/02": 1
-          }
+      "subjects": {
+        "Math": {
+          "04/02": 3,
+          "06/02": 5,
         },
-        {
-          "name": "English",
-          "marks": {
-            "04/02": 1,
-            "05/02": 8,
-            "06/02": 2,
-            "07/02": 7
-          }
+        "English": {
+          "05/02": 8,
+          "07/02": 7
         },
-        {
-          "name": "Biology",
-          "marks": {
-            "04/02": 2,
-            "05/02": 0,
-            "06/02": 9,
-            "07/02": 9
-          }
+        "Biology": {
+          "07/02": 9
         },
-        {
-          "name": "Chemistry",
-          "marks": {
-            "04/02": 9,
-            "05/02": 3,
-            "06/02": 0,
-            "07/02": 2
-          }
+        "Chemistry": {
+          "04/02": 9,
+          "05/02": 3,
+          "07/02": 2
         }
-      ]
+      }
     },
     {
       "id": 6,
@@ -298,44 +189,25 @@ export class DataService {
       },
       "address": "790 Dearborn Court, Irwin, West Virginia, 4282",
       "description": "Aute Lorem eu ad enim ex ipsum in do minim ex ullamco amet culpa deserunt. Minim esse exercitation excepteur proident. Elit nulla fugiat id nisi proident excepteur commodo irure et labore est id est.",
-      "subjects": [
-        {
-          "name": "Math",
-          "marks": {
-            "04/02": 0,
-            "05/02": 6,
-            "06/02": 7,
-            "07/02": 6
-          }
+      "subjects": {
+        "Math": {
+          "05/02": 6,
+          "06/02": 7,
+          "07/02": 6
         },
-        {
-          "name": "English",
-          "marks": {
-            "04/02": 10,
-            "05/02": 2,
-            "06/02": 4,
-            "07/02": 5
-          }
+        "English": {
+          "04/02": 10,
+          "07/02": 5
         },
-        {
-          "name": "Biology",
-          "marks": {
-            "04/02": 1,
-            "05/02": 3,
-            "06/02": 2,
-            "07/02": 6
-          }
+        "Biology": {
+          "07/02": 6
         },
-        {
-          "name": "Chemistry",
-          "marks": {
-            "04/02": 4,
-            "05/02": 7,
-            "06/02": 10,
-            "07/02": 9
-          }
+        "Chemistry": {
+          "05/02": 7,
+          "06/02": 10,
+          "07/02": 9
         }
-      ]
+      }
     },
     {
       "id": 7,
@@ -345,44 +217,25 @@ export class DataService {
       },
       "address": "416 Hancock Street, Greenbush, Alabama, 6784",
       "description": "Duis elit mollit dolor ea magna ut. Quis dolore cillum esse reprehenderit veniam nisi. Exercitation id amet incididunt ipsum voluptate nulla amet ad ea proident fugiat.",
-      "subjects": [
-        {
-          "name": "Math",
-          "marks": {
-            "04/02": 3,
-            "05/02": 6,
-            "06/02": 8,
-            "07/02": 9
-          }
+      "subjects": {
+        "Math": {
+          "06/02": 8,
+          "07/02": 9
         },
-        {
-          "name": "English",
-          "marks": {
-            "04/02": 5,
-            "05/02": 1,
-            "06/02": 9,
-            "07/02": 9
-          }
+        "English": {
+          "04/02": 5,
+          "05/02": 1,
+          "07/02": 9
         },
-        {
-          "name": "Biology",
-          "marks": {
-            "04/02": 2,
-            "05/02": 2,
-            "06/02": 6,
-            "07/02": 0
-          }
+        "Biology": {
+          "04/02": 2,
+          "05/02": 2
         },
-        {
-          "name": "Chemistry",
-          "marks": {
-            "04/02": 7,
-            "05/02": 1,
-            "06/02": 8,
-            "07/02": 3
-          }
+        "Chemistry": {
+          "04/02": 7,
+          "05/02": 1
         }
-      ]
+      }
     },
     {
       "id": 8,
@@ -392,44 +245,26 @@ export class DataService {
       },
       "address": "498 Madoc Avenue, Spelter, Kansas, 9675",
       "description": "Est duis nulla aute cillum tempor cillum pariatur. Id veniam est ipsum et aliquip do irure duis sunt amet excepteur ea enim ad. Dolore pariatur id et dolor aliqua amet aliquip ipsum velit ex. Ut elit et fugiat mollit aute fugiat do Lorem mollit dolor ipsum. Elit sit elit ipsum nostrud.",
-      "subjects": [
-        {
-          "name": "Math",
-          "marks": {
-            "04/02": 8,
-            "05/02": 10,
-            "06/02": 1,
-            "07/02": 5
-          }
+      "subjects": {
+        "Math": {
+          "04/02": 8,
+          "05/02": 10,
+          "07/02": 5
         },
-        {
-          "name": "English",
-          "marks": {
-            "04/02": 4,
-            "05/02": 7,
-            "06/02": 3,
-            "07/02": 6
-          }
+        "English": {
+          "04/02": 4,
+          "06/02": 3,
+          "07/02": 6
         },
-        {
-          "name": "Biology",
-          "marks": {
-            "04/02": 10,
-            "05/02": 5,
-            "06/02": 8,
-            "07/02": 0
-          }
+        "Biology": {
+          "04/02": 10,
+          "05/02": 5
         },
-        {
-          "name": "Chemistry",
-          "marks": {
-            "04/02": 2,
-            "05/02": 0,
-            "06/02": 3,
-            "07/02": 1
-          }
+        "Chemistry": {
+          "06/02": 3,
+          "07/02": 1
         }
-      ]
+      }
     },
     {
       "id": 9,
@@ -439,44 +274,25 @@ export class DataService {
       },
       "address": "602 Barwell Terrace, Fidelis, Arizona, 8309",
       "description": "Amet laborum in sit tempor id commodo do sint laboris. Commodo nisi adipisicing proident fugiat in laborum excepteur ea. Laborum adipisicing velit ipsum occaecat dolore ullamco ea tempor sit irure. Enim ipsum do duis dolore ullamco magna et fugiat est ut et anim. Do qui duis elit occaecat ex anim sunt minim esse ex id esse.",
-      "subjects": [
-        {
-          "name": "Math",
-          "marks": {
-            "04/02": 2,
-            "05/02": 4,
-            "06/02": 5,
-            "07/02": 8
-          }
+      "subjects": {
+        "Math": {
+          "04/02": 2,
+          "05/02": 4,
+          "07/02": 8
         },
-        {
-          "name": "English",
-          "marks": {
-            "04/02": 6,
-            "05/02": 2,
-            "06/02": 5,
-            "07/02": 6
-          }
+        "English": {
+          "04/02": 6,
         },
-        {
-          "name": "Biology",
-          "marks": {
-            "04/02": 0,
-            "05/02": 8,
-            "06/02": 2,
-            "07/02": 3
-          }
+        "Biology": {
+          "05/02": 8,
+          "06/02": 2,
+          "07/02": 3
         },
-        {
-          "name": "Chemistry",
-          "marks": {
-            "04/02": 3,
-            "05/02": 3,
-            "06/02": 10,
-            "07/02": 2
-          }
+        "Chemistry": {
+          "04/02": 3,
+          "07/02": 2
         }
-      ]
+      }
     },
     {
       "id": 10,
@@ -486,44 +302,29 @@ export class DataService {
       },
       "address": "584 Raleigh Place, Dunnavant, Texas, 8877",
       "description": "Amet elit deserunt mollit sit ullamco fugiat nisi consectetur. Labore laborum laborum anim irure do. Id labore do magna enim anim occaecat cupidatat dolor minim culpa qui id pariatur.",
-      "subjects": [
-        {
-          "name": "Math",
-          "marks": {
-            "04/02": 9,
-            "05/02": 4,
-            "06/02": 7,
-            "07/02": 6
-          }
+      "subjects": {
+        "Math": {
+          "04/02": 9,
+          "05/02": 4,
+          "06/02": 7,
+          "07/02": 6
         },
-        {
-          "name": "English",
-          "marks": {
-            "04/02": 2,
-            "05/02": 6,
-            "06/02": 5,
-            "07/02": 0
-          }
+        "English": {
+          "04/02": 2,
+          "05/02": 6,
+          "06/02": 5,
         },
-        {
-          "name": "Biology",
-          "marks": {
-            "04/02": 7,
-            "05/02": 7,
-            "06/02": 0,
-            "07/02": 7
-          }
+        "Biology": {
+          "04/02": 7,
+          "05/02": 7,
+          "07/02": 7
         },
-        {
-          "name": "Chemistry",
-          "marks": {
-            "04/02": 2,
-            "05/02": 0,
-            "06/02": 1,
-            "07/02": 4
-          }
+        "Chemistry": {
+          "04/02": 2,
+          "06/02": 1,
+          "07/02": 4
         }
-      ]
+      }
     }
   ];
 
@@ -570,4 +371,11 @@ export class DataService {
     this.subjects.push(newSubject);
   }
 
+  addSubjectToStudents(subjectName) {
+    this.students.forEach( (student) => {
+      this.students[student.id].subjects[subjectName] = {};
+    }
+    );
+  }
+  
 }
