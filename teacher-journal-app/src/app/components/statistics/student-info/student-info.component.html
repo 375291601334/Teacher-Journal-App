@@ -5,9 +5,9 @@
 
   <div>
     <div *ngFor='let subject of subjects'>
-      <p>{{subject.name}} ({{subject.averageBall}}):</p>
+      <p>{{subject.name}} ({{student[subject.name]}}):</p>
       <div class="progress-scale-container">
-        <div [style.width.%]="[subject.averageBall*10]" [style.height.px]="30" [style.background-color]="'red'"></div>
+        <div [style.width.%]="[student[subject.name]*10]" [style.height.px]="30" [style.background-color]="'red'"></div>
       </div>
     </div>
   </div>

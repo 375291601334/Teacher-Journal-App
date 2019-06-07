@@ -13,33 +13,36 @@ export class StudentInfoComponent implements OnInit {
   subjects;
 
   constructor(private dataService: DataService,
-    public route: ActivatedRoute) { 
+    public route: ActivatedRoute) {
 
+    this.subjects = this.dataService.getSubjects();
 
     this.route.params.subscribe(params => {
       this.studentFullName = params['id'];
-    });
-    
-    
-    [this.student] = this.dataService.getStudents().filter(
-      (student) => {
-        return (student.name.last === this.studentFullName.slice(0,this.studentFullName.indexOf('_')) 
-        && student.name.first === this.studentFullName.slice(this.studentFullName.indexOf('_') + 1, this.studentFullName.length ));
-      }
-    );
 
-  
-    this.subjects = this.dataService.getSubjects();
-    
-    this.subjects.forEach( (subject, index) => {
-      let count = 0;
-      let sum = 0;
-      for (let key in this.student.subjects[subject.name]) {
-        count += 1;
-        sum = sum + this.student.subjects[subject.name][key];
-      }
-      console.log(sum/count);
-      this.subjects[index].averageBall = sum/count;
+      [ this.student ] = this.dataService.getStudents().filter(
+        (student) => {
+          return (student.name.last === this.studentFullName.slice(0,this.studentFullName.indexOf('_')) 
+          && student.name.first === this.studentFullName.slice(this.studentFullName.indexOf('_') + 1, this.studentFullName.length ));
+        }
+      );
+      
+      this.subjects.forEach( (subject, index) => {
+        let count = 0;
+        let sum = 0;
+        for (let key in subject.marks) {
+          if (typeof subject.marks[key][this.student.id] === 'number') {
+            sum = sum + subject.marks[key][this.student.id];
+            count += 1;
+          }
+        }
+        if (count>0) {
+          this.student[subject.name] = sum/count;
+        } else {
+          this.student[subject.name] = 0;
+        } 
+      });
+
     });
 
   }

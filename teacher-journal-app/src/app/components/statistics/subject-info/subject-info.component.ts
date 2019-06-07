@@ -9,7 +9,6 @@ import { DataService } from '../../../common/services/data.service';
 })
 export class SubjectInfoComponent implements OnInit {
   subjectName;
-  students;
   subject;
   averageBall;
 
@@ -18,31 +17,26 @@ export class SubjectInfoComponent implements OnInit {
     
     this.route.params.subscribe(params => {
       this.subjectName = params['id'];
-    });
 
+      [ this.subject ] = this.dataService.getSubjects().filter( (subject) => (subject.name === this.subjectName) );
 
-    this.dataService.getSubjects().forEach( (subject) =>
-    {
-      if (subject.name === this.subjectName)
-      this.subject = subject;
-    }
-    );
-    this.students = this.dataService.getStudents();
-
-
-    let count = 0;
-    this.averageBall = this.students.reduce( (sum, student) =>
-    {
-      for (let key in student.subjects[this.subjectName]) {
-        count += 1;
-        sum = sum + student.subjects[this.subjectName][key];
+      let count = 0, sum = 0;
+      for (let key in this.subject.marks) {
+        sum = sum + this.subject.marks[key].reduce( (sum, mark) => {
+          if (typeof mark === 'number') {
+            sum = sum + mark;
+            count += 1;
+          }
+          return sum;
+        }, 0
+        );
       }
-      console.log(sum);
-      return sum;
-    }, 0
-  ) / count;
-
-
+      if (count>0) {
+        this.averageBall = sum/count;
+      } else {
+        this.averageBall = 0;
+      }
+    });
   }
 
   ngOnInit() {

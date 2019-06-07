@@ -31,10 +31,9 @@ export class StudentFormComponent implements OnInit {
         last: this.studentForm.value.lastName
       },
       address: this.studentForm.value.address,
-      description: this.studentForm.value.description
+      description: this.studentForm.value.description,
     };
 
-    console.warn(this.studentForm.value);
     this.dataService.addStudent(newStudent);
   }
 

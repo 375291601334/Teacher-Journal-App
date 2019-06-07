@@ -9,21 +9,23 @@
     <td>07/02</td>
   </thead>
   <tbody>
-    <tr *ngFor="let student of students">
+    <tr *ngFor="let student of students; let i=index">
       <td>{{student.name.first}}</td>
       <td>{{student.name.last}}</td>
       <td>{{student.averageMark}}</td>
-      <td><input type="text" [value]="[student.subjects[subjectName]['04/02']]"></td>
-      <td><input type="text" [value]="[student.subjects[subjectName]['05/02']]"></td>
-      <td><input type="text" [value]="[student.subjects[subjectName]['06/02']]"></td>
-      <td><input type="text" [value]="[student.subjects[subjectName]['07/02']]"></td>
+      <td><input type="text" [value]="[subject.marks['04/02'][i]]"></td>
+      <td><input type="text" [value]="[subject.marks['05/02'][i]]"></td>
+      <td><input type="text" [value]="[subject.marks['06/02'][i]]"></td>
+      <td><input type="text" [value]="[subject.marks['07/02'][i]]"></td>
     </tr>
   </tbody>
 </table>
 
+<app-button></app-button>
+
 <div>
   <label>Teacher:</label>
-  <input type="text" [value]="[subjects[subjectId].teacher]">
+  <input type="text" [value]="[subject.teacher]">
 </div>
 
 <button>Save</button>

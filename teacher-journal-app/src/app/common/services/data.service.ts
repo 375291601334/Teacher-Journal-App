@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Student } from '../classes/student';
+import { Subject } from '../classes/subject';
 
 @Injectable({
   providedIn: 'root'
@@ -8,374 +10,339 @@ export class DataService {
   constructor() { }
 
   students = [
-    {
-      "id": 0,
-      "name": {
-        "first": "Brooke",
-        "last": "Reilly"
+      {
+        "id": 0,
+        "name": {
+          "first": "Fields",
+          "last": "Chaney"
+        },
+        "address": "530 Maple Avenue, Lewis, Wyoming, 2493",
+        "description": "Ea consequat ullamco officia commodo incididunt reprehenderit excepteur Lorem. Do irure amet in veniam laborum occaecat exercitation enim. Adipisicing nostrud cillum dolor ullamco sint nisi do sint consequat. Exercitation labore dolore laboris veniam qui occaecat amet laborum esse eu anim pariatur. Id sunt pariatur aliquip occaecat deserunt laboris consectetur adipisicing cillum fugiat."
       },
-      "address": "401 Albee Square, Hillsboro, Connecticut, 4642",
-      "description": "Ea duis ea culpa ullamco consequat enim aliquip aliqua reprehenderit sunt. Elit proident cillum proident aute quis. Esse nulla non do qui nostrud aliquip ut Lorem officia culpa ipsum. Labore ex fugiat exercitation nisi laboris.",
-      "subjects": {
-        "Math":{
-          "04/02": 8,
-          "07/02": 3
+      {
+        "id": 1,
+        "name": {
+          "first": "Wendi",
+          "last": "Mcpherson"
         },
-        "English": {
-          "05/02": 9,
-          "06/02": 6,
-          "07/02": 6
-        },
-        "Biology": {
-            "04/02": 6,
-        },
-        "Chemistry": {
-            "04/02": 2,
-        }
-      }
-    },
-    {
-      "id": 1,
-      "name": {
-        "first": "Baker",
-        "last": "Reeves"
+        "address": "108 Wythe Place, Hickory, Idaho, 7133",
+        "description": "Do aliquip commodo excepteur deserunt nulla ipsum est qui dolor commodo eiusmod aliquip culpa ut. Ea duis sit nisi aliqua et veniam enim est. Et ullamco qui excepteur deserunt ex esse cupidatat mollit."
       },
-      "address": "645 Cranberry Street, Cherokee, Wisconsin, 1975",
-      "description": "Non minim laboris labore dolore duis veniam. Consequat et excepteur labore laboris adipisicing duis nulla officia mollit ipsum elit. Occaecat laborum proident labore quis pariatur sunt aliqua cillum aliqua ipsum sunt excepteur enim. Adipisicing eiusmod dolor ullamco mollit nisi. Proident officia ad adipisicing in enim eiusmod sunt Lorem aliquip consectetur. Quis fugiat reprehenderit velit ullamco fugiat. Ex consectetur nulla ullamco consequat exercitation veniam aliquip nulla.",
-      "subjects": {
-        "Math": {
-          "05/02": 8,
-          "06/02": 8,
-          "07/02": 9
+      {
+        "id": 2,
+        "name": {
+          "first": "Meadows",
+          "last": "Walter"
         },
-        "English": {
-          "04/02": 1,
-          "06/02": 10,
-          "07/02": 4
-        },
-        "Biology": {
-          "04/02": 8,
-          "05/02": 3,
-          },
-        "Chemistry": {
-          "04/02": 6,
-          "05/02": 6,
-          "06/02": 10,
-        }
-      }
-    },
-    {
-      "id": 2,
-      "name": {
-        "first": "Hendrix",
-        "last": "Mccullough"
+        "address": "588 Cove Lane, Craig, Minnesota, 5990",
+        "description": "Anim anim esse laborum minim consequat eu irure anim magna elit minim sint ut dolor. Sint in reprehenderit nostrud est do cupidatat enim veniam ad. Et occaecat dolore mollit fugiat elit consequat do."
       },
-      "address": "389 Tampa Court, Coultervillle, South Dakota, 5335",
-      "description": "Sunt proident officia occaecat nulla do veniam dolore enim in. Incididunt adipisicing tempor quis aliqua. Anim velit laborum irure magna enim exercitation magna do voluptate. Qui est dolore do est incididunt qui sit commodo nostrud magna in fugiat sint. Consectetur eu aliqua sit aliqua aliqua consectetur veniam tempor consectetur Lorem.",
-      "subjects": {
-        "Math": {
-          "06/02": 6,
-          "07/02": 8
+      {
+        "id": 3,
+        "name": {
+          "first": "Mckenzie",
+          "last": "Greene"
         },
-        "English": {
-          "06/02": 4,
-          "07/02": 4
-        },
-        "Biology": {
-          "04/02": 10,
-          "05/02": 5,
-          "07/02": 3
-        },
-        "Chemistry": {
-          "05/02": 6,
-          "06/02": 10,
-          "07/02": 1
-        }
-      }
-    },
-    {
-      "id": 3,
-      "name": {
-        "first": "Burris",
-        "last": "Price"
+        "address": "378 Will Place, Bawcomville, North Dakota, 181",
+        "description": "Ut velit excepteur aliquip ut dolore sint reprehenderit. Irure ipsum duis nulla reprehenderit voluptate laborum esse laboris. Aliqua laborum non nulla velit quis sit qui magna deserunt ad non mollit exercitation. In ut qui laborum amet elit eiusmod est voluptate sunt proident commodo laboris ad aliqua. Commodo tempor sunt reprehenderit aute eu enim dolor eiusmod magna cillum."
       },
-      "address": "647 Garden Street, Cassel, North Dakota, 1519",
-      "description": "Voluptate est id occaecat laborum culpa. Veniam sunt Lorem voluptate adipisicing dolor elit. Sunt sunt aliquip sit nisi nisi ullamco voluptate id exercitation non. Dolore et mollit velit exercitation incididunt elit id tempor irure ut sit incididunt sit. Ut non mollit qui velit in Lorem consectetur voluptate culpa cillum cillum cillum consectetur adipisicing.",
-      "subjects": {
-        "Math": {
-          "04/02": 3,
-          "06/02": 9,
-          "07/02": 9
+      {
+        "id": 4,
+        "name": {
+          "first": "Jenny",
+          "last": "Briggs"
         },
-        "English": {
-          "04/02": 5,
-          "05/02": 4,
-        },
-        "Biology": {
-          "06/02": 7,
-          "07/02": 10
-        },
-        "Chemistry": {
-          "04/02": 6,
-          "05/02": 5,
-          "06/02": 5,
-        }
-      }
-    },
-    {
-      "id": 4,
-      "name": {
-        "first": "Vang",
-        "last": "Avery"
+        "address": "362 Dwight Street, Brewster, Delaware, 2506",
+        "description": "Labore eu aliqua esse tempor Lorem minim amet amet sint Lorem adipisicing sint dolore. Magna Lorem mollit sunt aliquip cillum. Ea occaecat occaecat et aliqua sit duis officia. Ipsum sunt excepteur tempor mollit ex nostrud pariatur anim labore proident aliqua aliquip. Fugiat ullamco enim laborum dolore in eiusmod ullamco ullamco sint commodo esse."
       },
-      "address": "545 Remsen Avenue, Berlin, Nevada, 6758",
-      "description": "In ipsum deserunt mollit enim ullamco consectetur laborum officia. Aute Lorem ad fugiat nisi cupidatat cillum labore elit laboris. Voluptate nisi fugiat aute ad cupidatat consectetur eu.",
-      "subjects": {
-        "Math": {
-          "04/02": 7,
-          "06/02": 6,
+      {
+        "id": 5,
+        "name": {
+          "first": "Burton",
+          "last": "Delacruz"
         },
-        "English": {
-          "04/02": 3,
-          "05/02": 3,
-          "06/02": 8,
-          "07/02": 5
-        },
-        "Biology": {
-          "04/02": 7,
-          "05/02": 5,
-          "07/02": 3
-        },
-        "Chemistry": {
-          "04/02": 9,
-          "05/02": 3,
-          "06/02": 6,
-          "07/02": 3
-        }
-      }
-    },
-    {
-      "id": 5,
-      "name": {
-        "first": "Ramsey",
-        "last": "Morgan"
+        "address": "537 Bayview Place, Crumpler, South Carolina, 8252",
+        "description": "Officia dolor ipsum velit consectetur cupidatat aute reprehenderit deserunt ad dolor. Eu anim tempor in officia occaecat ea voluptate nostrud excepteur irure. Excepteur consectetur eiusmod qui laborum fugiat adipisicing."
       },
-      "address": "894 Pioneer Street, Holtville, Missouri, 7662",
-      "description": "Consequat nostrud laboris exercitation consectetur enim ea ipsum Lorem. Veniam consequat deserunt laboris officia ex excepteur officia est cillum consectetur. Veniam sunt exercitation pariatur deserunt consequat pariatur labore sunt amet id. Veniam consectetur occaecat excepteur Lorem sunt ex proident nulla ad quis amet aliquip aute ad.",
-      "subjects": {
-        "Math": {
-          "04/02": 3,
-          "06/02": 5,
+      {
+        "id": 6,
+        "name": {
+          "first": "Valdez",
+          "last": "Hampton"
         },
-        "English": {
-          "05/02": 8,
-          "07/02": 7
-        },
-        "Biology": {
-          "07/02": 9
-        },
-        "Chemistry": {
-          "04/02": 9,
-          "05/02": 3,
-          "07/02": 2
-        }
-      }
-    },
-    {
-      "id": 6,
-      "name": {
-        "first": "Jolene",
-        "last": "Herrera"
+        "address": "703 Hornell Loop, Franklin, Indiana, 3788",
+        "description": "Nulla non id reprehenderit sunt qui laboris consequat aute quis. Ex anim veniam id sit. Tempor do esse nulla minim id velit aute laborum dolore qui consectetur adipisicing."
       },
-      "address": "790 Dearborn Court, Irwin, West Virginia, 4282",
-      "description": "Aute Lorem eu ad enim ex ipsum in do minim ex ullamco amet culpa deserunt. Minim esse exercitation excepteur proident. Elit nulla fugiat id nisi proident excepteur commodo irure et labore est id est.",
-      "subjects": {
-        "Math": {
-          "05/02": 6,
-          "06/02": 7,
-          "07/02": 6
+      {
+        "id": 7,
+        "name": {
+          "first": "Lucia",
+          "last": "Carlson"
         },
-        "English": {
-          "04/02": 10,
-          "07/02": 5
-        },
-        "Biology": {
-          "07/02": 6
-        },
-        "Chemistry": {
-          "05/02": 7,
-          "06/02": 10,
-          "07/02": 9
-        }
-      }
-    },
-    {
-      "id": 7,
-      "name": {
-        "first": "Daugherty",
-        "last": "Bean"
+        "address": "877 Beacon Court, Elliott, Hawaii, 8797",
+        "description": "Aliqua amet cillum sit et Lorem ad esse. Est culpa dolor laboris sit sunt velit enim. Consequat commodo amet amet eiusmod reprehenderit."
       },
-      "address": "416 Hancock Street, Greenbush, Alabama, 6784",
-      "description": "Duis elit mollit dolor ea magna ut. Quis dolore cillum esse reprehenderit veniam nisi. Exercitation id amet incididunt ipsum voluptate nulla amet ad ea proident fugiat.",
-      "subjects": {
-        "Math": {
-          "06/02": 8,
-          "07/02": 9
+      {
+        "id": 8,
+        "name": {
+          "first": "Booth",
+          "last": "Waters"
         },
-        "English": {
-          "04/02": 5,
-          "05/02": 1,
-          "07/02": 9
-        },
-        "Biology": {
-          "04/02": 2,
-          "05/02": 2
-        },
-        "Chemistry": {
-          "04/02": 7,
-          "05/02": 1
-        }
-      }
-    },
-    {
-      "id": 8,
-      "name": {
-        "first": "Sandy",
-        "last": "Chase"
+        "address": "413 Hopkins Street, Ona, Kentucky, 5306",
+        "description": "Commodo cillum veniam sunt nisi fugiat sunt ad. Cupidatat qui enim officia dolore fugiat. Ut anim laboris nisi cillum magna cillum cillum ad sit consectetur incididunt officia et nostrud. Sunt adipisicing nisi tempor irure incididunt tempor nisi mollit aliqua in quis. Minim reprehenderit sunt ipsum commodo magna consectetur dolor. Eu quis cillum elit nisi. Sunt qui exercitation mollit aliqua duis elit eiusmod cillum ullamco et consectetur."
       },
-      "address": "498 Madoc Avenue, Spelter, Kansas, 9675",
-      "description": "Est duis nulla aute cillum tempor cillum pariatur. Id veniam est ipsum et aliquip do irure duis sunt amet excepteur ea enim ad. Dolore pariatur id et dolor aliqua amet aliquip ipsum velit ex. Ut elit et fugiat mollit aute fugiat do Lorem mollit dolor ipsum. Elit sit elit ipsum nostrud.",
-      "subjects": {
-        "Math": {
-          "04/02": 8,
-          "05/02": 10,
-          "07/02": 5
+      {
+        "id": 9,
+        "name": {
+          "first": "Vaughan",
+          "last": "Pate"
         },
-        "English": {
-          "04/02": 4,
-          "06/02": 3,
-          "07/02": 6
-        },
-        "Biology": {
-          "04/02": 10,
-          "05/02": 5
-        },
-        "Chemistry": {
-          "06/02": 3,
-          "07/02": 1
-        }
+        "address": "522 Commerce Street, Remington, Maryland, 6851",
+        "description": "Do dolor eu quis sint elit non reprehenderit consectetur. Ex labore incididunt duis Lorem proident anim ex cupidatat. Velit adipisicing consequat deserunt laboris. Voluptate commodo amet cillum minim mollit proident et eiusmod dolore duis irure fugiat reprehenderit. Incididunt anim qui nostrud eu ipsum cillum."
       }
-    },
-    {
-      "id": 9,
-      "name": {
-        "first": "Marshall",
-        "last": "Stevens"
-      },
-      "address": "602 Barwell Terrace, Fidelis, Arizona, 8309",
-      "description": "Amet laborum in sit tempor id commodo do sint laboris. Commodo nisi adipisicing proident fugiat in laborum excepteur ea. Laborum adipisicing velit ipsum occaecat dolore ullamco ea tempor sit irure. Enim ipsum do duis dolore ullamco magna et fugiat est ut et anim. Do qui duis elit occaecat ex anim sunt minim esse ex id esse.",
-      "subjects": {
-        "Math": {
-          "04/02": 2,
-          "05/02": 4,
-          "07/02": 8
-        },
-        "English": {
-          "04/02": 6,
-        },
-        "Biology": {
-          "05/02": 8,
-          "06/02": 2,
-          "07/02": 3
-        },
-        "Chemistry": {
-          "04/02": 3,
-          "07/02": 2
-        }
-      }
-    },
-    {
-      "id": 10,
-      "name": {
-        "first": "Deann",
-        "last": "Mayer"
-      },
-      "address": "584 Raleigh Place, Dunnavant, Texas, 8877",
-      "description": "Amet elit deserunt mollit sit ullamco fugiat nisi consectetur. Labore laborum laborum anim irure do. Id labore do magna enim anim occaecat cupidatat dolor minim culpa qui id pariatur.",
-      "subjects": {
-        "Math": {
-          "04/02": 9,
-          "05/02": 4,
-          "06/02": 7,
-          "07/02": 6
-        },
-        "English": {
-          "04/02": 2,
-          "05/02": 6,
-          "06/02": 5,
-        },
-        "Biology": {
-          "04/02": 7,
-          "05/02": 7,
-          "07/02": 7
-        },
-        "Chemistry": {
-          "04/02": 2,
-          "06/02": 1,
-          "07/02": 4
-        }
-      }
-    }
-  ];
+    ];
 
-  subjects =   [
-    {
-      "name": "Math",
-      "teacher": "Ms.Joyner",
-      "cabiner": 727,
-      "description": "Et anim et amet excepteur dolore. Veniam irure Lorem dolore exercitation esse aliquip nostrud elit eiusmod dolore amet eiusmod magna culpa. Cillum duis commodo ullamco labore aliquip exercitation ad elit."
-    },
-    {
-      "name": "English",
-      "teacher": "Ms.Hunt",
-      "cabiner": 344,
-      "description": "Dolor nisi exercitation reprehenderit exercitation. Consequat pariatur aliquip occaecat dolore proident dolore ipsum anim nostrud non amet est. Commodo exercitation cillum velit nostrud culpa ipsum proident ad laborum ad exercitation cillum. Cillum minim ut dolor ullamco officia duis tempor labore aliqua occaecat tempor esse non non. Ad anim aliquip sunt sunt aute culpa in non dolor consequat cillum in."
-    },
-    {
-      "name": "Biology",
-      "teacher": "Ms.Pollard",
-      "cabiner": 813,
-      "description": "Aliqua fugiat do irure commodo. Deserunt ea tempor ullamco et exercitation. Qui amet aute fugiat exercitation in ea."
-    },
-    {
-      "name": "Chemistry",
-      "teacher": "Ms.Hooper",
-      "cabiner": 334,
-      "description": "Aute aute et pariatur culpa officia adipisicing voluptate quis qui enim. In ad laboris ea veniam pariatur sint ea fugiat culpa mollit. Cillum fugiat amet cupidatat non. Magna fugiat do consectetur deserunt non et deserunt ipsum pariatur culpa ullamco eiusmod."
-    }
-  ];
+    subjects = [
+      {
+        "name": "Math",
+        "teacher": "Ms.Vinson",
+        "cabiner": 408,
+        "description": "Velit qui occaecat aliqua labore incididunt mollit qui ea adipisicing enim veniam labore ullamco elit. Culpa labore officia consequat elit anim ut exercitation non cillum proident sunt in. Sit exercitation non officia enim aute irure incididunt adipisicing minim qui consequat. Quis enim et veniam est qui veniam duis consectetur exercitation sunt deserunt esse laborum.",
+        "marks": {
+          "04/02": [
+            ,
+            ,
+            ,
+            9,
+            ,
+            6,
+            5,
+            ,
+            10,
+            7
+          ],
+          "05/02": [
+            ,
+            ,
+            ,
+            ,
+            5,
+            ,
+            ,
+            8,
+            ,
+            
+          ],
+          "06/02": [
+            4,
+            ,
+            ,
+            6,
+            7,
+            7,
+            ,
+            ,
+            6,
+            7
+          ],
+          "07/02": [
+            ,
+            7,
+            ,
+            ,
+            ,
+            6,
+            4,
+            10,
+            8,
+            6
+          ]
+        }
+      },
+      {
+        "name": "English",
+        "teacher": "Ms.Lowe",
+        "cabiner": 817,
+        "description": "Ipsum officia culpa dolor eiusmod. Sunt consequat commodo tempor proident fugiat qui excepteur ut in aute qui. Voluptate non anim exercitation cupidatat do reprehenderit. Exercitation magna in non ad in ullamco occaecat voluptate cupidatat. Ullamco ut est aliqua amet ex aute incididunt quis proident fugiat deserunt velit. Elit labore quis sit dolore. Labore ullamco ullamco anim culpa consequat cupidatat quis velit fugiat deserunt ullamco.",
+        "marks": {
+          "04/02": [
+            10,
+            ,
+            ,
+            9,
+            ,
+            6,
+            ,
+            7,
+            5,
+            3
+          ],
+          "05/02": [
+            ,
+            7,
+            ,
+            ,
+            ,
+            ,
+            5,
+            10,
+            ,
+            8
+          ],
+          "06/02": [
+            ,
+            9,
+            7,
+            ,
+            8,
+            ,
+            9,
+            ,
+            7,
+            10
+          ],
+          "07/02": [
+            ,
+            7,
+            ,
+            5,
+            2,
+            ,
+            ,
+            ,
+            10,
+            6
+          ]
+        }
+      },
+      {
+        "name": "Biology",
+        "teacher": "Ms.Burnett",
+        "cabiner": 645,
+        "description": "Eiusmod id anim do velit. Quis velit nisi fugiat cillum. Laboris velit ex qui eu consectetur. Ea ut dolore tempor dolor duis deserunt dolor voluptate. Nisi consequat proident velit minim pariatur sint. Ad adipisicing do esse excepteur.",
+        "marks": {
+          "04/02": [
+            10,
+            5,
+            ,
+            8,
+            ,
+            7,
+            9,
+            ,
+            ,
+            
+          ],
+          "05/02": [
+            2,
+            ,
+            7,
+            ,
+            9,
+            ,
+            8,
+            10,
+            ,
+            
+          ],
+          "06/02": [
+            9,
+            8,
+            5,
+            ,
+            8,
+            ,
+            ,
+            6,
+            7,
+            
+          ],
+          "07/02": [
+            5,
+            ,
+            6,
+            10,
+            ,
+            ,
+            8,
+            ,
+            5,
+            10
+          ]
+        }
+      },
+      {
+        "name": "Chemistry",
+        "teacher": "Ms.Fischer",
+        "cabiner": 253,
+        "description": "Nisi amet do consectetur incididunt ut nisi do esse elit commodo. Aute deserunt et cupidatat ipsum in eiusmod et et exercitation dolore nostrud aliquip proident sunt. Sunt consequat pariatur laborum nostrud aliquip labore pariatur fugiat ex. Laboris velit mollit quis proident laboris exercitation quis ipsum velit eu proident dolore. Est aliqua nulla quis reprehenderit consequat. Amet pariatur non pariatur excepteur.",
+        "marks": {
+          "04/02": [
+            7,
+            5,
+            ,
+            ,
+            ,
+            7,
+            8,
+            9,
+            ,
+            8
+          ],
+          "05/02": [
+            ,
+            8,
+            10,
+            ,
+            3,
+            ,
+            6,
+            7,
+            ,
+            
+          ],
+          "06/02": [
+            ,
+            ,
+            ,
+            8,
+            8,
+            ,
+            6,
+            9,
+            ,
+            8
+          ],
+          "07/02": [
+            ,
+            ,
+            5,
+            10,
+            ,
+            9,
+            ,
+            ,
+            8,
+            5
+          ]
+        }
+      }
+    ];
 
-  getStudents() {
+  getStudents(): Array<Student> {
     return this.students;
   }
 
-  getSubjects() {
+  getSubjects(): Array<Subject> {
     return this.subjects;
   }
 
-  addStudent(newStudent) {
+  addStudent(newStudent: Student): void {
     this.students.push(newStudent);
   }
 
-  addSubject(newSubject) {
+  addSubject(newSubject: Subject): void {
     this.subjects.push(newSubject);
-  }
-
-  addSubjectToStudents(subjectName) {
-    this.students.forEach( (student) => {
-      this.students[student.id].subjects[subjectName] = {};
-    }
-    );
   }
   
 }

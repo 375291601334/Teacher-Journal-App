@@ -28,10 +28,15 @@ export class SubjectFormComponent implements OnInit {
       name:  this.subjectForm.value.name,
       teacher:  this.subjectForm.value.teacher,
       cabiner: this.subjectForm.value.cabiner,
-      description: this.subjectForm.value.description
+      description: this.subjectForm.value.description,
+      marks: {
+        '04/02': [],
+        '05/02': [],
+        '06/02': [],
+        '07/02': []
+      }
     };
 
-    this.dataService.addSubjectToStudents(newSubject.name);
     this.dataService.addSubject(newSubject);
   }
 

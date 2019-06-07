@@ -9,9 +9,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SubjectTableComponent implements OnInit {
   students;
-  subjects;
+  subject;
   subjectName;
-  subjectId;
 
   constructor(private dataService: DataService,
     public route: ActivatedRoute) { 
@@ -20,24 +19,18 @@ export class SubjectTableComponent implements OnInit {
       this.subjectName = params['id'];
     });
 
-    this.subjects = this.dataService.getSubjects();
+    [ this.subject ] = this.dataService.getSubjects().filter( (subject) => (subject.name === this.subjectName) );
     this.students = this.dataService.getStudents();
-
-    this.subjects.forEach( (subject, index) => {
-      if (subject.name === this.subjectName) {
-        this.subjectId = index;
-      }
-    }
-    );
-
 
     this.students.forEach( (student, id) =>
       {
         let sum = 0, count = 0;
         
-        for (let key in student.subjects[this.subjectName]) {
-          sum = sum + student.subjects[this.subjectName][key];
-          count += 1;
+        for (let key in this.subject.marks) {
+          if (typeof this.subject.marks[key][id] === 'number') {
+            sum = sum + this.subject.marks[key][id];
+            count += 1;
+          }
         }
         if (count > 0) {
           this.students[id].averageMark =  sum/count;
