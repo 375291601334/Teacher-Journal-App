@@ -8,14 +8,14 @@
     </td>
   </thead>
   <tbody>
-    <tr *ngFor="let student of students; let i=index">
+    <tr *ngFor="let student of students | async">
       <td>{{ student.name.first }}</td>
       <td>{{ student.name.last }}</td>
-      <td>{{ averageMarks[i] }}</td>
-      <td class='marks' *ngFor="let marksOnDate of subject.marks; let j = index;">
+      <td>{{ averageMarks[student.id] }}</td>
+      <td class='marks' *ngFor="let marksOnDate of subject.marks">
         <input 
         type="number" 
-        [(ngModel)]="marksOnDate.studentsMarks[i]"
+        [(ngModel)]="marksOnDate.studentsMarks[student.id]"
         (change)="onMarkChange(student.id)">
       </td>
     </tr>

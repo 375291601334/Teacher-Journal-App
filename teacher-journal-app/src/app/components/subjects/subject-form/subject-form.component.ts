@@ -1,7 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { DataService } from "../../../common/services/data.service";
 import { Subject, Marks } from "src/app/common/classes/subject";
+
+import { Store, select } from "@ngrx/store";
+import { SubjectsState } from "../../../redux/subjects.state";
+import * as DataActions from "../../../redux/subjects.actions";
 
 @Component({
   selector: "app-subject-form",
@@ -11,7 +14,7 @@ import { Subject, Marks } from "src/app/common/classes/subject";
 export class SubjectFormComponent implements OnInit {
   public subjectForm: FormGroup;
 
-  constructor(private dataService: DataService,
+  constructor(private store: Store<SubjectsState>,
               private fb: FormBuilder) {
   }
 
@@ -38,7 +41,7 @@ export class SubjectFormComponent implements OnInit {
       ]
     );
 
-    this.dataService.addSubject(newSubject);
+    this.store.dispatch(new DataActions.addSubject(newSubject));
     this.subjectForm.reset();
   }
 

@@ -1,9 +1,15 @@
-<div 
-*ngFor='let subject of subjects'
-[routerLink]="[subject.name]" 
-routerLinkActive="active">
-  <p>{{subject.name}}</p>
+<div class="container">
+  <div class="list">
+    <div class="subject-tab"
+    *ngFor='let subject of subjects | async'
+    [routerLink]="[subject.name]" 
+    routerLinkActive="active">
+    <p>{{subject.name}}</p>
+    </div>
+  </div>
+  
+  <div class="info">
+    <router-outlet></router-outlet>
+  </div>
 </div>
-
-<router-outlet class="right-column"></router-outlet>
 

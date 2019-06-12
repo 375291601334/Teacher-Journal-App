@@ -1,8 +1,14 @@
-<div 
-*ngFor='let student of students'
-[routerLink]="[student.name.last+'_'+student.name.first]" 
-routerLinkActive="active">
-  <p>{{student.name.last}} {{student.name.first}}</p>
+<div class="container">
+  <div class="list">
+    <div class="student-tab"
+    *ngFor='let student of students | async'
+    [routerLink]="[student.name.last+'_'+student.name.first]" 
+    routerLinkActive="active">
+      <p>{{student.name.last}} {{student.name.first}}</p>
+    </div>
+  </div>
+  
+  <div class="info">
+    <router-outlet></router-outlet>
+  </div>
 </div>
-
-<router-outlet></router-outlet>

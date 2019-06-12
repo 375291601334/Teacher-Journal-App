@@ -1,6 +1,9 @@
 import { Component } from "@angular/core";
-import { DataService } from "../../../common/services/data.service";
 import { Subject } from "src/app/common/classes/subject";
+
+import { Store, select } from "@ngrx/store";
+import { Observable } from "rxjs";
+import { SubjectsState } from "../../../redux/subjects.state";
 
 @Component({
   selector: "app-subjects-list",
@@ -8,10 +11,11 @@ import { Subject } from "src/app/common/classes/subject";
   styleUrls: ["./subjects-list.component.less"]
 })
 export class SubjectsListComponent {
-  public subjects: Subject[];
+  public subjects: Observable<Subject[]>;
 
-  constructor(private dataService: DataService) {
-    this.subjects = this.dataService.getSubjects();
+  constructor(private store: Store<SubjectsState>) {
+    this.subjects = store.pipe(select("subjects"));
+
   }
 
 }

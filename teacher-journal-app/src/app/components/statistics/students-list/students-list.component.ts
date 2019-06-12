@@ -1,6 +1,9 @@
 import { Component } from "@angular/core";
-import { DataService } from "../../../common/services/data.service";
 import { Student } from "src/app/common/classes/student";
+
+import { Store, select } from "@ngrx/store";
+import { Observable } from "rxjs";
+import { StudentsState } from "../../../redux/students.state";
 
 @Component({
   selector: "app-students-list",
@@ -8,10 +11,10 @@ import { Student } from "src/app/common/classes/student";
   styleUrls: ["./students-list.component.less"]
 })
 export class StudentsListComponent {
-  public students: Student[];
+  public students: Observable<Student[]>;
 
-  constructor(private dataService: DataService) {
-    this.students = this.dataService.getStudents();
+  constructor(private store: Store<StudentsState>) {
+    this.students = store.pipe(select("students"));
   }
 
 }

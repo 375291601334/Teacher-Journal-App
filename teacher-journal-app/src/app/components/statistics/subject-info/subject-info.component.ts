@@ -1,7 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { DataService } from "../../../common/services/data.service";
 import { Subject, Marks } from "src/app/common/classes/subject";
+
+import { Store, select } from "@ngrx/store";
+import { SubjectsState } from "../../../redux/subjects.state";
 
 @Component({
   selector: "app-subject-info",
@@ -13,11 +15,13 @@ export class SubjectInfoComponent {
   public subject: Subject;
   public averageBall: number;
 
-  constructor(private dataService: DataService, public route: ActivatedRoute) {
+  constructor(private store: Store<SubjectsState>, public route: ActivatedRoute) {
 
     this.route.params.subscribe(params => {
       this.subjectName = params.id;
-      [this.subject] = this.dataService.getSubjects().filter( (subject) => (subject.name === this.subjectName) );
+      store.pipe(select("subjects")).subscribe( (subjects) =>
+        [this.subject] = subjects.filter( (subject: Subject) => (subject.name === this.subjectName))
+      );
       this.averageBall = this.getAverageBall();
     });
   }

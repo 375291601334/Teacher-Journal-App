@@ -1,4 +1,4 @@
-<table>
+<table *ngIf="students">
   <thead>
     <td>Id</td>
     <td>Name</td>
@@ -6,7 +6,7 @@
     <td>Adress</td>
   </thead>
   <tbody>
-    <tr *ngFor="let student of students">
+    <tr *ngFor="let student of students | async">
       <td>{{student.id}}</td>
       <td>{{student.name.first}}</td>
       <td>{{student.name.last}}</td>
