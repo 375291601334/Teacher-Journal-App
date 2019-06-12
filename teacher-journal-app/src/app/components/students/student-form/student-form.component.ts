@@ -1,40 +1,43 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
-import { DataService } from '../../../common/services/data.service';
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormBuilder } from "@angular/forms";
+import { Validators } from "@angular/forms";
+import { DataService } from "../../../common/services/data.service";
+import { Student } from "../../../common/classes/student";
 
 @Component({
-  selector: 'app-student-form',
-  templateUrl: './student-form.component.html',
-  styleUrls: ['./student-form.component.less']
+  selector: "app-student-form",
+  templateUrl: "./student-form.component.html",
+  styleUrls: ["./student-form.component.less"]
 })
 export class StudentFormComponent implements OnInit {
-  studentForm: FormGroup;
+  public studentForm: FormGroup;
 
-  constructor(private dataService: DataService,
-    private fb: FormBuilder) { 
+  constructor(public dataService: DataService,
+              private fb: FormBuilder) {
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.studentForm = this.fb.group({
-      firstName: '',
-      lastName: '',
-      address: '',
-      description: ''
+      firstName: ["", Validators.required],
+      lastName: ["", Validators.required],
+      address: "",
+      description: ""
     });
   }
 
-  onSubmit() {
-    let newStudent = {
-      id: this.dataService.getStudents().length, 
-      name: {
+  public onSubmit(): void {
+    let newStudent: Student = new Student(
+      this.dataService.getStudents().length,
+      {
         first: this.studentForm.value.firstName,
         last: this.studentForm.value.lastName
       },
-      address: this.studentForm.value.address,
-      description: this.studentForm.value.description,
-    };
+      this.studentForm.value.address,
+      this.studentForm.value.description
+    );
 
     this.dataService.addStudent(newStudent);
+    this.studentForm.reset();
   }
 
 }

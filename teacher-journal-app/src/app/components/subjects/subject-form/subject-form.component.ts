@@ -1,43 +1,45 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
-import { DataService } from '../../../common/services/data.service';
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { DataService } from "../../../common/services/data.service";
+import { Subject, Marks } from "src/app/common/classes/subject";
 
 @Component({
-  selector: 'app-subject-form',
-  templateUrl: './subject-form.component.html',
-  styleUrls: ['./subject-form.component.less']
+  selector: "app-subject-form",
+  templateUrl: "./subject-form.component.html",
+  styleUrls: ["./subject-form.component.less"]
 })
 export class SubjectFormComponent implements OnInit {
-  subjectForm: FormGroup;
+  public subjectForm: FormGroup;
 
   constructor(private dataService: DataService,
-    private fb: FormBuilder) { 
+              private fb: FormBuilder) {
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.subjectForm = this.fb.group({
-      name: '',
-      teacher: '',
-      cabiner: '',
-      description: ''
+      name: ["", Validators.required],
+      teacher: ["", Validators.required],
+      cabiner: ["",  Validators.pattern("^[0-9]*$")],
+      description: ""
     });
   }
 
-  onSubmit() {
-    let newSubject = {
-      name:  this.subjectForm.value.name,
-      teacher:  this.subjectForm.value.teacher,
-      cabiner: this.subjectForm.value.cabiner,
-      description: this.subjectForm.value.description,
-      marks: {
-        '04/02': [],
-        '05/02': [],
-        '06/02': [],
-        '07/02': []
-      }
-    };
+  public onSubmit(): void {
+    let newSubject: Subject = new Subject(
+      this.subjectForm.value.name,
+      this.subjectForm.value.teacher,
+      this.subjectForm.value.cabiner,
+      this.subjectForm.value.description,
+      [
+        new Marks("04/02", []),
+        new Marks("05/02", []),
+        new Marks("06/02", []),
+        new Marks("07/02", []),
+      ]
+    );
 
     this.dataService.addSubject(newSubject);
+    this.subjectForm.reset();
   }
 
 }

@@ -5,12 +5,18 @@
 <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label>*Name:</label>
-    <input type="text" formControlName="firstName" required>
+    <input type="text" formControlName="firstName" required [ngClass]="{'is-invalid': studentForm.get('firstName').touched && studentForm.get('firstName').invalid}">
+    <div class='validation-message' *ngIf="studentForm.get('firstName').touched && studentForm.get('firstName').invalid">
+      Name must be entered!
+    </div>
   </div>
 
   <div class="form-group">
     <label>*Last name:</label>
-    <input type="text" formControlName="lastName" required>
+    <input type="text" formControlName="lastName" required [ngClass]="{'is-invalid': studentForm.get('lastName').touched && studentForm.get('lastName').invalid}">
+    <div class='validation-message' *ngIf="studentForm.get('lastName').touched && studentForm.get('lastName').invalid">
+      Last name must be entered!
+    </div>
   </div>
 
   <div class="form-group">
@@ -24,4 +30,5 @@
   </div>
 
   <input type="submit" [disabled]="!studentForm.valid" value='Add'>
+
 </form>

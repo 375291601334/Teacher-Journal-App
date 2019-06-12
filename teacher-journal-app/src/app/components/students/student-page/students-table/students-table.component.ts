@@ -1,19 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { DataService } from '../../../../common/services/data.service';
+import { Component, Input } from "@angular/core";
+import { Student } from "../../../../common/classes/student";
 
 @Component({
-  selector: 'app-students-table',
-  templateUrl: './students-table.component.html',
-  styleUrls: ['./students-table.component.less']
+  selector: "app-students-table",
+  templateUrl: "./students-table.component.html",
+  styleUrls: ["./students-table.component.less"]
 })
-export class StudentsTableComponent implements OnInit {
-  students;
-  
-  constructor(private dataService: DataService) { 
-    this.students = this.dataService.getStudents();
-  }
-
-  ngOnInit() {
-  }
+export class StudentsTableComponent {
+  @Input() public students: Student[];
 
 }

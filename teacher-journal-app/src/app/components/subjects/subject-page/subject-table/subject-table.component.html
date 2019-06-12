@@ -3,29 +3,29 @@
     <td>Name</td>
     <td>Last Name</td>
     <td>Average Mark</td>
-    <td>04/02</td>
-    <td>05/02</td>
-    <td>06/02</td>
-    <td>07/02</td>
+    <td class='dates' *ngFor="let marksOnDate of subject.marks">
+      <input type="text" [(ngModel)]='marksOnDate.date'>
+    </td>
   </thead>
   <tbody>
     <tr *ngFor="let student of students; let i=index">
-      <td>{{student.name.first}}</td>
-      <td>{{student.name.last}}</td>
-      <td>{{student.averageMark}}</td>
-      <td><input type="text" [value]="[subject.marks['04/02'][i]]"></td>
-      <td><input type="text" [value]="[subject.marks['05/02'][i]]"></td>
-      <td><input type="text" [value]="[subject.marks['06/02'][i]]"></td>
-      <td><input type="text" [value]="[subject.marks['07/02'][i]]"></td>
+      <td>{{ student.name.first }}</td>
+      <td>{{ student.name.last }}</td>
+      <td>{{ averageMarks[i] }}</td>
+      <td class='marks' *ngFor="let marksOnDate of subject.marks; let j = index;">
+        <input 
+        type="number" 
+        [(ngModel)]="marksOnDate.studentsMarks[i]"
+        (change)="onMarkChange(student.id)">
+      </td>
     </tr>
   </tbody>
 </table>
 
-<app-button></app-button>
-
 <div>
   <label>Teacher:</label>
-  <input type="text" [value]="[subject.teacher]">
+  <input type="text" [(ngModel)]='subject.teacher'>
 </div>
 
-<button>Save</button>
+<button (click)='addColumn()'>Add column with new date</button>
+<button (click)='saveChanges()'>Save</button>
