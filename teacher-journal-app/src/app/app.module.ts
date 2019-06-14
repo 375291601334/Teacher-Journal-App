@@ -28,6 +28,8 @@ import { StoreModule } from "@ngrx/store";
 import { studentReducer } from "./redux/students.reducer";
 import { subjectReducer } from "./redux/subjects.reducer";
 
+import { HttpClientModule } from "@angular/common/http";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +56,8 @@ import { subjectReducer } from "./redux/subjects.reducer";
     MatButtonModule,
     MatIconModule,
     MatChipsModule,
-    StoreModule.forRoot({ students: studentReducer, subjects: subjectReducer })
+    StoreModule.forRoot({ students: studentReducer, subjects: subjectReducer }),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

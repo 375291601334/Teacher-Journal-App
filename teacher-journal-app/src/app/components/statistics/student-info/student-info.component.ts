@@ -1,11 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { DataService } from "../../../common/services/data.service";
 import { Student } from "src/app/common/classes/student";
 import { Subject, Marks } from "src/app/common/classes/subject";
 
 import { Store, select } from "@ngrx/store";
 import { StudentsState } from "../../../redux/students.state";
+import { SubjectsState } from "../../../redux/subjects.state";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-student-info",
@@ -15,23 +16,25 @@ import { StudentsState } from "../../../redux/students.state";
 export class StudentInfoComponent implements OnInit {
   public studentFullName: string;
   public student: Student;
-  public subjects: Subject[];
+  public subjects: Observable<Subject[]>;
+  public subjectsArr: Subject[];
   public averageMarks: number[];
 
-  constructor(private dataService: DataService, public route: ActivatedRoute, private store: Store<StudentsState>) {
-    this.subjects = [];
+  constructor(public route: ActivatedRoute, private studStore: Store<StudentsState>, private subjStore: Store<SubjectsState>) {
+    this.subjects = subjStore.pipe(select("subjects"));
+    subjStore.pipe(select("subjects")).subscribe( (subjects) => this.subjectsArr = subjects);
 
     this.route.params.subscribe(params => {
       this.studentFullName = params.id;
 
-      store.pipe(select("students")).subscribe( (students) => [this.student] = students.filter(
+      studStore.pipe(select("students")).subscribe( (students) => [this.student] = students.filter(
         (student) => {
           return (student.name.last === this.studentFullName.slice(0, this.studentFullName.indexOf("_"))
           && student.name.first === this.studentFullName.slice(this.studentFullName.indexOf("_") + 1, this.studentFullName.length ));
         }
       ));
 
-      this.averageMarks = this.subjects.map( (subject) => {
+      this.averageMarks = this.subjectsArr.map( (subject) => {
         let sum: number = 0, count: number = 0;
         subject.marks.forEach( (marksObj: Marks) => {
           if (typeof marksObj.studentsMarks[this.student.id] === "number") {
@@ -51,8 +54,7 @@ export class StudentInfoComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.subjects = this.dataService.getSubjects();
-    this.averageMarks = this.subjects.map( (subject) => {
+    this.averageMarks = this.subjectsArr.map( (subject) => {
       let sum: number = 0, count: number = 0;
       subject.marks.forEach( (marksObj: Marks) => {
         if (typeof marksObj.studentsMarks[this.student.id] === "number") {

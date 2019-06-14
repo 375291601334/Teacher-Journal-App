@@ -12,8 +12,10 @@ import * as DataActions from "../../../redux/students.actions";
   templateUrl: "./student-form.component.html",
   styleUrls: ["./student-form.component.less"]
 })
+
 export class StudentFormComponent implements OnInit {
   public studentForm: FormGroup;
+  public students: Student[];
   public nextStudentId: number;
 
   constructor(private fb: FormBuilder, private store: Store<StudentsState>) {

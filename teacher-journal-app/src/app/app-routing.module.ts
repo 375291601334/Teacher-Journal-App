@@ -11,13 +11,14 @@ import { StudentsListComponent } from "./components/statistics/students-list/stu
 import { SubjectInfoComponent } from "./components/statistics/subject-info/subject-info.component";
 import { StudentInfoComponent } from "./components/statistics/student-info/student-info.component";
 import { ExportComponent } from "./components/export/export.component";
+import { CanDeactivateGuard } from "./can-deactivate.guard";
 
 const routes: Routes = [
   { path: "students", component: StudentPageComponent },
   { path: "students/new", component: StudentFormComponent },
   { path: "subjects", component: SubjectPageComponent },
   { path: "subjects/new", component: SubjectFormComponent },
-  { path: "subjects/:id", component: SubjectTableComponent },
+  { path: "subjects/:id", component: SubjectTableComponent, canDeactivate: [CanDeactivateGuard] },
   { path: "statistics", component: StatisticsComponent,
     children: [
       { path: "", redirectTo: "students", pathMatch: "full"},

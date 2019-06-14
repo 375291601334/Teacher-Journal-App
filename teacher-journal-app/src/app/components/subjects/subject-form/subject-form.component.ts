@@ -34,10 +34,10 @@ export class SubjectFormComponent implements OnInit {
       this.subjectForm.value.cabiner,
       this.subjectForm.value.description,
       [
-        new Marks("04/02", []),
-        new Marks("05/02", []),
-        new Marks("06/02", []),
-        new Marks("07/02", []),
+        new Marks("2019-06-01", []),
+        new Marks("2019-06-02", []),
+        new Marks("2019-06-03", []),
+        new Marks("2019-06-04", []),
       ]
     );
 
