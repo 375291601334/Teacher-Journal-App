@@ -38,6 +38,11 @@ const routes: Routes = [
   },
   { path: "statistics", component: ExportComponent },
   { path: "export", component: ExportComponent },
+  { path: "",
+    redirectTo: "/students",
+    pathMatch: "full"
+  },
+  { path: "**", component: StudentPageComponent }
 ];
 
 @NgModule({

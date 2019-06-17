@@ -25,8 +25,8 @@ import { SubjectInfoComponent } from "./components/statistics/subject-info/subje
 import { StudentInfoComponent } from "./components/statistics/student-info/student-info.component";
 
 import { StoreModule } from "@ngrx/store";
-import { studentReducer } from "./redux/students.reducer";
-import { subjectReducer } from "./redux/subjects.reducer";
+import { studentReducer } from "./redux/studentReducer";
+import { subjectReducer } from "./redux/subjectReducer";
 
 import { HttpClientModule } from "@angular/common/http";
 

@@ -1,8 +1,8 @@
 import { Action } from "@ngrx/store";
 import { Subject } from "../common/classes/subject";
 
-export const ADD_SUBJECT = "[Subject Form] AddSubject";
-export const UPDATE_SUBJECT = "[Subject Form] UpdateSubject";
+export const ADD_SUBJECT = "[Subject] Add Subject";
+export const UPDATE_SUBJECT = "[Subject] Update Subject";
 
 export class addSubject implements Action {
     readonly type = ADD_SUBJECT;

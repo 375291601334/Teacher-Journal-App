@@ -15,11 +15,11 @@ import * as DataActions from "../../../redux/students.actions";
 
 export class StudentFormComponent implements OnInit {
   public studentForm: FormGroup;
-  public students: Student[];
   public nextStudentId: number;
 
   constructor(private fb: FormBuilder, private store: Store<StudentsState>) {
-    store.pipe(select("students")).subscribe( (sudents) => this.nextStudentId = sudents.length);
+    store.pipe(select("students"))
+         .subscribe( students => this.nextStudentId = students.length);
   }
 
   public ngOnInit(): void {

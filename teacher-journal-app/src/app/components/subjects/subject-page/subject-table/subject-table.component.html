@@ -11,7 +11,7 @@
     </td>
   </thead>
   <tbody>
-    <tr *ngFor="let student of students | async">
+    <tr *ngFor="let student of students">
       <td>{{ student.name.first }}</td>
       <td>{{ student.name.last }}</td>
       <td>{{ averageMarks[student.id] }}</td>
