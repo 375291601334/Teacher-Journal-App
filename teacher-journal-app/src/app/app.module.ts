@@ -29,6 +29,7 @@ import { studentReducer } from "./redux/studentReducer";
 import { subjectReducer } from "./redux/subjectReducer";
 
 import { HttpClientModule } from "@angular/common/http";
+import { SortPipe } from './common/pipes/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { HttpClientModule } from "@angular/common/http";
     StudentsListComponent,
     SubjectsListComponent,
     SubjectInfoComponent,
-    StudentInfoComponent
+    StudentInfoComponent,
+    SortPipe
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,7 @@ import { HttpClientModule } from "@angular/common/http";
     StoreModule.forRoot({ students: studentReducer, subjects: subjectReducer }),
     HttpClientModule
   ],
-  providers: [],
+  providers: [ SortPipe ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
