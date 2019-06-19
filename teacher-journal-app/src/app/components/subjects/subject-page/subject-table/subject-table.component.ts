@@ -59,9 +59,24 @@ export class SubjectTableComponent implements OnInit {
   }
 
   public addColumn(): void {
+
+    function getNextMaxDate(marks: Marks[]): string {
+      let max: Date = marks.reduce(
+        (maxdate: Date, marksObj: Marks) => {
+          if ( new Date(marksObj.date) > maxdate ) {
+            maxdate = new Date(marksObj.date);
+          }
+          return maxdate;
+        },
+        new Date("01.01.2019"));
+
+      max.setDate(max.getDate() + 1);
+      return new Date(max).toJSON().slice(0, 10);
+    }
+
     this.newSubject.marks = [...this.newSubject.marks,
       {
-        date: new Date().toJSON().slice(0, 10),
+        date: getNextMaxDate(this.newSubject.marks),
         studentsMarks: Array(this.students.length),
       }
     ];
@@ -74,7 +89,7 @@ export class SubjectTableComponent implements OnInit {
     }
   }
 
-  public onMarkChange(studentId: number): void {
+  public onMarkChange(studentId: number, event: any): void {
     this.averageMarks[studentId] = this.averageMarksCalculations.getStudentAverageBall(studentId, this.newSubject);
   }
 

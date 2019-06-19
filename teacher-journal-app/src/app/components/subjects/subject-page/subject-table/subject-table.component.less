@@ -16,11 +16,15 @@ th, td {
     text-align: center;
 }
 
-tr:hover {
+tr:hover, tr:hover input {
     background-color: @basic-color;
 }
 
-tr input:hover {
+tr input:hover  {
+    background-color: @table-head-color;
+}
+
+tr input:focus {
     background-color: @acsent-color;
 }
 
@@ -33,7 +37,6 @@ table input {
     margin: 0 auto;
     padding: 0;
     line-height: 2.5rem;
-    border: none;
     text-align: center;
 }
 
@@ -77,6 +80,16 @@ button:hover {
     cursor: pointer;
 }
 
+button[disabled] {
+    border-color: @basic-color;
+    color: @basic-color;
+}
+
+button[disabled]:hover {
+    border-color: @basic-color;
+    cursor: unset;
+}
+
 .add-column-sign {
     border: none;
     background-color: @layout-color;
@@ -90,4 +103,15 @@ mat-icon {
 
 mat-icon:hover {
     color: @acsent-color;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input.ng-invalid,
+.invalid-date {
+    border: 2px solid red;
+    color: red;
 }

@@ -30,6 +30,8 @@ import { subjectReducer } from "./redux/subjectReducer";
 
 import { HttpClientModule } from "@angular/common/http";
 import { SortPipe } from './common/pipes/sort.pipe';
+import { ValidateMarkDirective } from './common/directives/validate-mark.directive';
+import { ValidateDateDirective } from './common/directives/validate-date.directive';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { SortPipe } from './common/pipes/sort.pipe';
     SubjectsListComponent,
     SubjectInfoComponent,
     StudentInfoComponent,
-    SortPipe
+    SortPipe,
+    ValidateMarkDirective,
+    ValidateDateDirective
   ],
   imports: [
     BrowserModule,

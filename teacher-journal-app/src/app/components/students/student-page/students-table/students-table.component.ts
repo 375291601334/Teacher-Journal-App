@@ -1,8 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, Renderer2, ElementRef } from "@angular/core";
 import { Student } from "../../../../common/classes/student";
 
 import { Store, select } from "@ngrx/store";
-import { Observable } from "rxjs";
 import { StudentsState } from "../../../../redux/students.state";
 import { SortPipe } from "../../../../common/pipes/sort.pipe";
 
@@ -16,7 +15,7 @@ export class StudentsTableComponent {
   public sortingField: string;
   public isDesc: boolean;
 
-  constructor(private store: Store<StudentsState>, private sortPipe: SortPipe) {
+  constructor(private store: Store<StudentsState>, private sortPipe: SortPipe, private renderer: Renderer2, private el: ElementRef) {
     store.pipe(select("students"))
          .subscribe( students => this.students = students);
     this.sortingField = "id";

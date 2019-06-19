@@ -23,4 +23,14 @@ thead {
 .sort-button-up,
 .sort-button-down {
     cursor: pointer;
+    visibility: hidden;
+}
+
+td:hover .sort-button-up,
+td:hover .sort-button-down {
+    visibility: visible;
+}
+
+.sorted {
+    visibility: visible;
 }
