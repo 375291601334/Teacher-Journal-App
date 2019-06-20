@@ -1,8 +1,10 @@
-import { Component, Renderer2, ElementRef } from "@angular/core";
+import { Component } from "@angular/core";
 import { Student } from "../../../../common/classes/student";
 
-import { Store, select } from "@ngrx/store";
-import { StudentsState } from "../../../../redux/students.state";
+import { Store } from "@ngrx/store";
+import { State, selectStudents } from "../../../../redux/reducers/combineReducers";
+import { LoadStudents } from "../../../../redux/actions/students.actions";
+
 import { SortPipe } from "../../../../common/pipes/sort.pipe";
 
 @Component({
@@ -15,9 +17,10 @@ export class StudentsTableComponent {
   public sortingField: string;
   public isDesc: boolean;
 
-  constructor(private store: Store<StudentsState>, private sortPipe: SortPipe, private renderer: Renderer2, private el: ElementRef) {
-    store.pipe(select("students"))
+  constructor(private store: Store<State>, private sortPipe: SortPipe) {
+    this.store.select(selectStudents)
          .subscribe( students => this.students = students);
+    this.store.dispatch(new LoadStudents());
     this.sortingField = "id";
     this.isDesc = false;
   }

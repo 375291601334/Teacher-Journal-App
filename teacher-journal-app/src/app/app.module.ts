@@ -25,13 +25,14 @@ import { SubjectInfoComponent } from "./components/statistics/subject-info/subje
 import { StudentInfoComponent } from "./components/statistics/student-info/student-info.component";
 
 import { StoreModule } from "@ngrx/store";
-import { studentReducer } from "./redux/studentReducer";
-import { subjectReducer } from "./redux/subjectReducer";
+import { EffectsModule } from "@ngrx/effects";
+import { effects } from "./redux/effects/combineEffects";
+import { reducers } from "./redux/reducers/combineReducers";
 
 import { HttpClientModule } from "@angular/common/http";
-import { SortPipe } from './common/pipes/sort.pipe';
-import { ValidateMarkDirective } from './common/directives/validate-mark.directive';
-import { ValidateDateDirective } from './common/directives/validate-date.directive';
+import { SortPipe } from "./common/pipes/sort.pipe";
+import { ValidateMarkDirective } from "./common/directives/validate-mark.directive";
+import { ValidateDateDirective } from "./common/directives/validate-date.directive";
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { ValidateDateDirective } from './common/directives/validate-date.directi
     MatButtonModule,
     MatIconModule,
     MatChipsModule,
-    StoreModule.forRoot({ students: studentReducer, subjects: subjectReducer }),
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot(effects),
     HttpClientModule
   ],
   providers: [ SortPipe ],

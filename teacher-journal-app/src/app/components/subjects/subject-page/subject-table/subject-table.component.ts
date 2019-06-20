@@ -5,11 +5,11 @@ import { AverageMarksCalculationsService } from "../../../../common/services/ave
 import { Student } from "src/app/common/classes/student";
 import { Subject, Marks } from "src/app/common/classes/subject";
 
-import { Store, select } from "@ngrx/store";
+import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
-import { StudentsState } from "../../../../redux/students.state";
-import { SubjectsState } from "../../../../redux/subjects.state";
-import * as DataActions from "../../../../redux/subjects.actions";
+import { State, selectSubjects, selectStudents } from "../../../../redux/reducers/combineReducers";
+import { LoadSubjects, UpdateSubject } from "../../../../redux/actions/subjects.actions";
+import { LoadStudents } from "../../../../redux/actions/students.actions";
 
 @Component({
   selector: "app-subject-table",
@@ -26,8 +26,7 @@ export class SubjectTableComponent implements OnInit {
   public averageMarks: number[];
 
   constructor(public route: ActivatedRoute,
-              private studentsStore: Store<StudentsState>,
-              private subjectsStore: Store<SubjectsState>,
+              private store: Store<State>,
               private dialogService: SaveChangesDialogService,
               private averageMarksCalculations: AverageMarksCalculationsService) {
 
@@ -41,13 +40,13 @@ export class SubjectTableComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.studentsStore
-        .pipe(select("students"))
+    this.store.dispatch(new LoadStudents());
+    this.store.select(selectStudents)
         .subscribe( students => this.students = students);
 
     // studentSelectState.subscribe
-    this.subjectsStore
-        .pipe(select("subjects"))
+    this.store.dispatch(new LoadStudents());
+    this.store.select(selectSubjects)
         .subscribe( (subjects) =>
                     [this.oldSubject] = subjects.filter( (subject: Subject) => (subject.name === this.subjectName))
                   );
@@ -85,7 +84,7 @@ export class SubjectTableComponent implements OnInit {
   public saveChanges(): void {
     if (JSON.stringify(this.oldSubject) !== JSON.stringify(this.newSubject)) {
       this.oldSubject = JSON.parse(JSON.stringify(this.newSubject));
-      this.subjectsStore.dispatch(new DataActions.updateSubject(this.newSubject));
+      this.store.dispatch(new UpdateSubject(this.newSubject));
     }
   }
 

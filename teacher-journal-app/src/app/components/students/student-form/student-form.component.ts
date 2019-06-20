@@ -5,7 +5,7 @@ import { Student } from "../../../common/classes/student";
 
 import { Store, select } from "@ngrx/store";
 import { StudentsState } from "../../../redux/students.state";
-import * as DataActions from "../../../redux/students.actions";
+import * as fromStudents from "../../../redux/actions/students.actions";
 
 @Component({
   selector: "app-student-form",
@@ -18,7 +18,7 @@ export class StudentFormComponent implements OnInit {
   public nextStudentId: number;
 
   constructor(private fb: FormBuilder, private store: Store<StudentsState>) {
-    store.pipe(select("students"))
+    store.select("students")
          .subscribe( students => this.nextStudentId = students.length);
   }
 
@@ -41,7 +41,7 @@ export class StudentFormComponent implements OnInit {
       this.studentForm.value.address,
       this.studentForm.value.description
     );
-    this.store.dispatch(new DataActions.addStudent(newStudent));
+    this.store.dispatch(new fromStudents.AddStudent(newStudent));
     this.studentForm.reset();
   }
 

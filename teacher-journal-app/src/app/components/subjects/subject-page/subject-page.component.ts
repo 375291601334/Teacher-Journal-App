@@ -1,9 +1,10 @@
 import { Component } from "@angular/core";
 import { Subject } from "src/app/common/classes/subject";
 
-import { Store, select } from "@ngrx/store";
+import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
-import { SubjectsState } from "../../../redux/subjects.state";
+import { State, selectSubjects } from "../../../redux/reducers/combineReducers";
+import { LoadSubjects } from "../../../redux/actions/subjects.actions";
 
 @Component({
   selector: "app-subject-page",
@@ -13,8 +14,9 @@ import { SubjectsState } from "../../../redux/subjects.state";
 export class SubjectPageComponent {
   public subjects: Observable<Subject[]>;
 
-  constructor(private store: Store<SubjectsState>) {
-    this.subjects = store.pipe(select("subjects"));
+  constructor(private store: Store<State>) {
+    this.subjects = this.store.select(selectSubjects);
+    this.store.dispatch(new LoadSubjects());
   }
 
 }

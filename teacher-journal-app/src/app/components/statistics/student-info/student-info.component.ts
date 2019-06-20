@@ -4,9 +4,11 @@ import { Student } from "src/app/common/classes/student";
 import { Subject } from "src/app/common/classes/subject";
 import { AverageMarksCalculationsService } from "../../../common/services/average-marks-calculations.service";
 
-import { Store, select } from "@ngrx/store";
-import { StudentsState } from "../../../redux/students.state";
-import { SubjectsState } from "../../../redux/subjects.state";
+import { Store } from "@ngrx/store";
+import { State } from "../../../redux/reducers/combineReducers";
+import { selectSubjects, selectStudents } from "src/app/redux/reducers/combineReducers";
+import { LoadSubjects } from "src/app/redux/actions/subjects.actions";
+import { LoadStudents } from "src/app/redux/actions/students.actions";
 
 @Component({
   selector: "app-student-info",
@@ -21,15 +23,16 @@ export class StudentInfoComponent {
 
   constructor(public route: ActivatedRoute,
               private averageMarksCalculations: AverageMarksCalculationsService,
-              private studStore: Store<StudentsState>,
-              private subjStore: Store<SubjectsState>) {
-    subjStore.pipe(select("subjects"))
+              private store: Store<State>) {
+    store.dispatch(new LoadSubjects());
+    store.dispatch(new LoadStudents());
+    store.select(selectSubjects)
             .subscribe( (subjects) => this.subjects = subjects);
 
     this.route.params.subscribe(params => {
       this.studentFullName = params.id;
 
-      studStore.pipe(select("students"))
+      store.select(selectStudents)
               .subscribe( students =>
                           [this.student] = students.filter( student => {
                             const nameSeparator: number = this.studentFullName.indexOf("_");

@@ -1,9 +1,10 @@
 import { Component } from "@angular/core";
 import { Student } from "src/app/common/classes/student";
 
-import { Store, select } from "@ngrx/store";
+import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
-import { StudentsState } from "../../../redux/students.state";
+import { State, selectStudents } from "../../../redux/reducers/combineReducers";
+import { LoadStudents } from "src/app/redux/actions/students.actions";
 
 @Component({
   selector: "app-students-list",
@@ -13,8 +14,9 @@ import { StudentsState } from "../../../redux/students.state";
 export class StudentsListComponent {
   public students: Observable<Student[]>;
 
-  constructor(private store: Store<StudentsState>) {
-    this.students = store.pipe(select("students"));
+  constructor(private store: Store<State>) {
+    this.store.dispatch(new LoadStudents());
+    this.students = store.select(selectStudents);
   }
 
 }
