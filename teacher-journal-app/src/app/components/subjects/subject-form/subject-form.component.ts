@@ -5,6 +5,7 @@ import { Subject, Marks } from "src/app/common/classes/subject";
 import { Store } from "@ngrx/store";
 import { State } from "../../../redux/reducers/combineReducers";
 import * as fromSubjects from "../../../redux/actions/subjects.actions";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-subject-form",
@@ -15,7 +16,8 @@ export class SubjectFormComponent implements OnInit {
   public subjectForm: FormGroup;
 
   constructor(private store: Store<State>,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private router: Router) {
   }
 
   public ngOnInit(): void {
@@ -43,6 +45,7 @@ export class SubjectFormComponent implements OnInit {
 
     this.store.dispatch(new fromSubjects.AddSubject(newSubject));
     this.subjectForm.reset();
+    this.router.navigate(["/subjects"]);
   }
 
 }

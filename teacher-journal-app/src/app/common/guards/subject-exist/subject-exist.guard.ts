@@ -25,7 +25,13 @@ export class SubjectExistGuard implements CanActivate {
 
   public subjectExists(name: string): Observable<boolean> {
     return this.store.select(selectSubjects).pipe(
-      map( subjects => subjects.some( subject => subject.name === name)),
+      map( subjects => {
+        if (subjects.some( subject => subject.name === name)) {
+          return true;
+        }
+        this.router.navigate(["/page-not-found"]);
+        return false;
+      }),
       take(1)
     );
   }

@@ -28,7 +28,13 @@ export class StudentExistGuard implements CanActivate {
     const lastName: string = fullName.slice(0, nameSeparator);
     const firstName: string = fullName.slice(nameSeparator + 1, fullName.length);
     return this.store.select(selectStudents).pipe(
-      map( students => students.some( student => (student.name.first === firstName && student.name.last === lastName))),
+      map( students => {
+        if ( students.some( student => (student.name.first === firstName && student.name.last === lastName)) ) {
+          return true;
+        }
+        this.router.navigate(["/page-not-found"]);
+        return false;
+      }),
       take(1)
     );
   }

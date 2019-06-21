@@ -14,6 +14,7 @@ import { ExportComponent } from "./components/export/export.component";
 import { CanDeactivateGuard } from "./common/guards/can-deactivate-unsaved-marks/can-deactivate.guard";
 import { SubjectExistGuard } from "./common/guards/subject-exist/subject-exist.guard";
 import { StudentExistGuard } from "./common/guards/student-exist/student-exist.guard";
+import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
 
 const routes: Routes = [
   { path: "students", component: StudentPageComponent  },
@@ -45,11 +46,12 @@ const routes: Routes = [
   },
   { path: "statistics", component: ExportComponent },
   { path: "export", component: ExportComponent },
+  { path: "page-not-found", component: PageNotFoundComponent },
   { path: "",
     redirectTo: "/students",
     pathMatch: "full"
   },
-  { path: "**", component: StudentPageComponent }
+  { path: "**", component: PageNotFoundComponent }
 ];
 
 @NgModule({

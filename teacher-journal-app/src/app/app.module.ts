@@ -33,6 +33,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { SortPipe } from "./common/pipes/sort.pipe";
 import { ValidateMarkDirective } from "./common/directives/validate-mark.directive";
 import { ValidateDateDirective } from "./common/directives/validate-date.directive";
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ValidateDateDirective } from "./common/directives/validate-date.directi
     StudentInfoComponent,
     SortPipe,
     ValidateMarkDirective,
-    ValidateDateDirective
+    ValidateDateDirective,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

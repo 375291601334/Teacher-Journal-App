@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable, throwError } from "rxjs";
+import { Observable } from "rxjs";
+import { retry } from "rxjs/operators";
 import { Student } from "../classes/student";
 import { catchError } from "rxjs/operators";
 
@@ -15,6 +16,9 @@ export class DataService {
 
   public getJSONData(): Observable<any> {
     return this.http.get<Student[]>(this.url)
-    .pipe( catchError( (error: any) => Observable.throw(error.json()) ));
+    .pipe(
+      retry(3),
+      catchError( (error: any) => Observable.throw(error.json()))
+    );
   }
 }

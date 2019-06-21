@@ -7,6 +7,7 @@ import { Store } from "@ngrx/store";
 import { State } from "../../../redux/reducers/combineReducers";
 import { selectStudents } from "../../../redux/selectors/students.selectors";
 import * as fromStudents from "../../../redux/actions/students.actions";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-student-form",
@@ -18,7 +19,7 @@ export class StudentFormComponent implements OnInit {
   public studentForm: FormGroup;
   public nextStudentId: number;
 
-  constructor(private fb: FormBuilder, private store: Store<State>) {
+  constructor(private fb: FormBuilder, private store: Store<State>, private router: Router) {
     store.select(selectStudents)
          .subscribe( students => this.nextStudentId = students.length);
   }
@@ -44,6 +45,7 @@ export class StudentFormComponent implements OnInit {
     );
     this.store.dispatch(new fromStudents.AddStudent(newStudent));
     this.studentForm.reset();
+    this.router.navigate(["/students"]);
   }
 
 }
