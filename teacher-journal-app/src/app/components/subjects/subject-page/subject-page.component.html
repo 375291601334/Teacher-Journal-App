@@ -3,7 +3,7 @@
 </h2>
 
 <div class='subjects-container'>
-  <div class='subject-item' *ngFor='let subject of subjects | async '>
+  <div class='subject-item' *ngFor='let subject of subjects$ | async '>
     <a [routerLink]="['/subjects', subject.name]" >{{subject.name}}</a>
   </div>
 </div>

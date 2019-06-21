@@ -6,9 +6,8 @@ import { AverageMarksCalculationsService } from "../../../common/services/averag
 
 import { Store } from "@ngrx/store";
 import { State } from "../../../redux/reducers/combineReducers";
-import { selectSubjects, selectStudents } from "src/app/redux/reducers/combineReducers";
-import { LoadSubjects } from "src/app/redux/actions/subjects.actions";
-import { LoadStudents } from "src/app/redux/actions/students.actions";
+import { selectStudents } from "src/app/redux/selectors/students.selectors";
+import { selectSubjects } from "src/app/redux/selectors/subjects.selectors";
 
 @Component({
   selector: "app-student-info",
@@ -24,8 +23,6 @@ export class StudentInfoComponent {
   constructor(public route: ActivatedRoute,
               private averageMarksCalculations: AverageMarksCalculationsService,
               private store: Store<State>) {
-    store.dispatch(new LoadSubjects());
-    store.dispatch(new LoadStudents());
     store.select(selectSubjects)
             .subscribe( (subjects) => this.subjects = subjects);
 

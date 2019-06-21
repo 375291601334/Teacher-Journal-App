@@ -3,8 +3,8 @@ import { Subject } from "src/app/common/classes/subject";
 
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
-import { State, selectSubjects } from "../../../redux/reducers/combineReducers";
-import { LoadSubjects } from "../../../redux/actions/subjects.actions";
+import { State } from "../../../redux/reducers/combineReducers";
+import { selectSubjects } from "src/app/redux/selectors/subjects.selectors";
 
 @Component({
   selector: "app-subject-page",
@@ -12,11 +12,10 @@ import { LoadSubjects } from "../../../redux/actions/subjects.actions";
   styleUrls: ["./subject-page.component.less"]
 })
 export class SubjectPageComponent {
-  public subjects: Observable<Subject[]>;
+  public subjects$: Observable<Subject[]>;
 
   constructor(private store: Store<State>) {
-    this.subjects = this.store.select(selectSubjects);
-    this.store.dispatch(new LoadSubjects());
+    this.subjects$ = this.store.select(selectSubjects);
   }
 
 }

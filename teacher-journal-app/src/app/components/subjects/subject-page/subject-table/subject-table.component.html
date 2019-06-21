@@ -1,9 +1,9 @@
 <form #tableForm="ngForm">
 <table>
   <thead>
-    <td>Name</td>
-    <td>Last Name</td>
-    <td>Average Mark</td>
+    <td *ngFor="let column of tableColumns">
+      {{column}}
+    </td>
     <td class="dates" *ngFor="let marksOnDate of newSubject.marks; let i = index">
       <input 
       type="date" 

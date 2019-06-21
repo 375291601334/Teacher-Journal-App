@@ -5,14 +5,14 @@ import { AverageMarksCalculationsService } from "../../../common/services/averag
 
 import { Store } from "@ngrx/store";
 import { State } from "../../../redux/reducers/combineReducers";
-import { LoadSubjects } from "src/app/redux/actions/subjects.actions";
-import { selectSubjects } from "src/app/redux/reducers/combineReducers";
+import { selectSubjects } from "src/app/redux/selectors/subjects.selectors";
 
 @Component({
   selector: "app-subject-info",
   templateUrl: "./subject-info.component.html",
   styleUrls: ["./subject-info.component.less"]
 })
+
 export class SubjectInfoComponent {
   public subjectName: string;
   public subject: Subject;
@@ -25,7 +25,6 @@ export class SubjectInfoComponent {
     this.route.params.subscribe(params => {
       this.subjectName = params.id;
 
-      store.dispatch(new LoadSubjects());
       store.select(selectSubjects)
            .subscribe( (subjects) =>
                         [this.subject] = subjects.filter( (subject: Subject) => (subject.name === this.subjectName))

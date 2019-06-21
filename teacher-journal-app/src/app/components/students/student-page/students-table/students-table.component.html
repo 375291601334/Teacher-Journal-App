@@ -1,25 +1,10 @@
 <ng-content></ng-content>
 <table *ngIf="students">
   <thead>
-    <td>
-      Id
-      <mat-icon *ngIf="!isDesc" [ngClass]="{'sorted': sortingField === 'id'}" class="sort-button-down" (click)='setDescSortingField("id")'>arrow_drop_down</mat-icon>
-      <mat-icon *ngIf="isDesc" [ngClass]="{'sorted': sortingField === 'id'}" class="sort-button-up" (click)='setAscSortingField("id")'>arrow_drop_up</mat-icon>
-    </td>
-    <td>
-      Name 
-      <mat-icon *ngIf="!isDesc" [ngClass]="{'sorted': sortingField === 'name.first'}" class="sort-button-down" (click)='setDescSortingField("name.first")'>arrow_drop_down</mat-icon>
-      <mat-icon *ngIf="isDesc" [ngClass]="{'sorted': sortingField === 'name.first'}" class="sort-button-up" (click)='setAscSortingField("name.first")'>arrow_drop_up</mat-icon>
-    </td>
-    <td>
-      Last Name
-      <mat-icon *ngIf="!isDesc" [ngClass]="{'sorted': sortingField === 'name.last'}" class="sort-button-down" (click)='setDescSortingField("name.last")'>arrow_drop_down</mat-icon>
-      <mat-icon *ngIf="isDesc" [ngClass]="{'sorted': sortingField === 'name.last'}" class="sort-button-up" (click)='setAscSortingField("name.last")'>arrow_drop_up</mat-icon> 
-    </td>
-    <td>
-      Address
-      <mat-icon *ngIf="!isDesc" [ngClass]="{'sorted': sortingField === 'address'}" class="sort-button-down" (click)='setDescSortingField("address")'>arrow_drop_down</mat-icon>
-      <mat-icon *ngIf="isDesc" [ngClass]="{'sorted': sortingField === 'address'}" class="sort-button-up" (click)='setAscSortingField("address")'>arrow_drop_up</mat-icon>
+    <td *ngFor="let column of tableColumns">
+      {{column.name}}
+      <mat-icon *ngIf="!isDesc" [ngClass]="{'sorted': sortingField === column.field}" class="sort-button-down" (click)='setDescSortingField(column.field)'>arrow_drop_down</mat-icon>
+      <mat-icon *ngIf="isDesc" [ngClass]="{'sorted': sortingField === column.field}" class="sort-button-up" (click)='setAscSortingField(column.field)'>arrow_drop_up</mat-icon>
     </td>
   </thead>
   <tbody>

@@ -2,8 +2,8 @@ import { Component } from "@angular/core";
 import { Student } from "../../../../common/classes/student";
 
 import { Store } from "@ngrx/store";
-import { State, selectStudents } from "../../../../redux/reducers/combineReducers";
-import { LoadStudents } from "../../../../redux/actions/students.actions";
+import { State } from "../../../../redux/reducers/combineReducers";
+import { selectStudents } from "../../../../redux/selectors/students.selectors";
 
 import { SortPipe } from "../../../../common/pipes/sort.pipe";
 
@@ -16,11 +16,16 @@ export class StudentsTableComponent {
   public students: Student[];
   public sortingField: string;
   public isDesc: boolean;
+  public tableColumns: { name: string; field: string; }[] = [
+    {name: "Id", field: "id"},
+    {name: "Name", field: "name.first"},
+    {name: "Last Name", field: "name.last"},
+    {name: "Address", field: "address"},
+  ];
 
   constructor(private store: Store<State>, private sortPipe: SortPipe) {
     this.store.select(selectStudents)
          .subscribe( students => this.students = students);
-    this.store.dispatch(new LoadStudents());
     this.sortingField = "id";
     this.isDesc = false;
   }

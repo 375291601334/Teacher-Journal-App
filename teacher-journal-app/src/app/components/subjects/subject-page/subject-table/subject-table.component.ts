@@ -7,9 +7,10 @@ import { Subject, Marks } from "src/app/common/classes/subject";
 
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
-import { State, selectSubjects, selectStudents } from "../../../../redux/reducers/combineReducers";
-import { LoadSubjects, UpdateSubject } from "../../../../redux/actions/subjects.actions";
-import { LoadStudents } from "../../../../redux/actions/students.actions";
+import { State } from "../../../../redux/reducers/combineReducers";
+import { selectStudents } from "../../../../redux/selectors/students.selectors";
+import { selectSubjects } from "../../../../redux/selectors/subjects.selectors";
+import { UpdateSubject } from "../../../../redux/actions/subjects.actions";
 
 @Component({
   selector: "app-subject-table",
@@ -24,6 +25,7 @@ export class SubjectTableComponent implements OnInit {
   public newSubject: Subject;
   public subjectName: string;
   public averageMarks: number[];
+  public tableColumns: string[] = ["Name", "Last Name", "Average Mark"];
 
   constructor(public route: ActivatedRoute,
               private store: Store<State>,
@@ -40,12 +42,10 @@ export class SubjectTableComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.store.dispatch(new LoadStudents());
     this.store.select(selectStudents)
         .subscribe( students => this.students = students);
 
     // studentSelectState.subscribe
-    this.store.dispatch(new LoadStudents());
     this.store.select(selectSubjects)
         .subscribe( (subjects) =>
                     [this.oldSubject] = subjects.filter( (subject: Subject) => (subject.name === this.subjectName))

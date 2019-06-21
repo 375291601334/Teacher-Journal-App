@@ -3,8 +3,9 @@ import { FormGroup, FormBuilder } from "@angular/forms";
 import { Validators } from "@angular/forms";
 import { Student } from "../../../common/classes/student";
 
-import { Store, select } from "@ngrx/store";
-import { StudentsState } from "../../../redux/students.state";
+import { Store } from "@ngrx/store";
+import { State } from "../../../redux/reducers/combineReducers";
+import { selectStudents } from "../../../redux/selectors/students.selectors";
 import * as fromStudents from "../../../redux/actions/students.actions";
 
 @Component({
@@ -17,8 +18,8 @@ export class StudentFormComponent implements OnInit {
   public studentForm: FormGroup;
   public nextStudentId: number;
 
-  constructor(private fb: FormBuilder, private store: Store<StudentsState>) {
-    store.select("students")
+  constructor(private fb: FormBuilder, private store: Store<State>) {
+    store.select(selectStudents)
          .subscribe( students => this.nextStudentId = students.length);
   }
 

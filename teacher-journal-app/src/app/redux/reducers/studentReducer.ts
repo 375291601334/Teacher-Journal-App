@@ -28,8 +28,7 @@ export function reducer(state: StudentsState = initialState, action: fromStudent
                 loaded: false
             };
 
-        case fromStudents.LOAD_STUDENTS_SUCCESS:
-            {
+        case fromStudents.LOAD_STUDENTS_SUCCESS: {
                 const data: Student[] = action.payload;
                 return {
                     ...state,
@@ -50,6 +49,6 @@ export function reducer(state: StudentsState = initialState, action: fromStudent
     }
 }
 
-export const getStudentsloading = (state: StudentsState) => state.loading;
-export const getStudentsloaded = (state: StudentsState) => state.loaded;
-export const getStudents = (state: StudentsState) => state.data;
+export const getStudentsloading: any = (state: StudentsState) => state.loading;
+export const getStudentsloaded: any = (state: StudentsState) => state.loaded;
+export const getStudents: any = (state: StudentsState) => state.data;

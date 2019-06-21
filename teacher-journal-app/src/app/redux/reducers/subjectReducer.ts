@@ -43,22 +43,25 @@ export function reducer(state: SubjectsState = initialState, action: fromSubject
           data: [...state.data, action.payload]
         };
 
-      // case fromSubjects.UPDATE_SUBJECT:
-      //   const updatedSubject: Subject = action.payload;
-      //   const newState: Subject[] = state.map( (subject) => {
-      //     if (subject.name === updatedSubject.name) {
-      //       return updatedSubject;
-      //     } else {
-      //       return subject;
-      //     }
-      //   });
-      //   return newState;
+      case fromSubjects.UPDATE_SUBJECT:
+        const updatedSubject: Subject = action.payload;
+        const newData: Subject[] = state.data.map( (subject) => {
+          if (subject.name === updatedSubject.name) {
+            return updatedSubject;
+          } else {
+            return subject;
+          }
+        });
+        return {
+          ...state,
+          data: newData
+        };
 
         default:
             return state;
     }
 }
 
-export const getSubjectsloading = (state: SubjectsState) => state.loading;
-export const getSubjectsloaded = (state: SubjectsState) => state.loaded;
-export const getSubjects = (state: SubjectsState) => state.data;
+export const getSubjectsloading: any = (state: SubjectsState) => state.loading;
+export const getSubjectsloaded: any = (state: SubjectsState) => state.loaded;
+export const getSubjects: any = (state: SubjectsState) => state.data;
