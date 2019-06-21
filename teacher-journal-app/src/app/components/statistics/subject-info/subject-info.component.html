@@ -4,11 +4,11 @@
   </h2>
 
   <div>
-    <p>Teacher: {{subject.teacher}}</p>
-    <p>Cabiner: {{subject.cabiner}}</p>
+    <p>{{'Teacher' | translate }}: {{subject.teacher}}</p>
+    <p>{{'Cabiner' | translate }}: {{subject.cabiner}}</p>
   </div>
 
-  <h3>Average Mark Progress ({{averageBall}}):</h3>
+  <h3>{{'Average Mark' | translate }} ({{averageBall}}):</h3>
   <div class="progress-scale-container">
     <div [style.width.%]="[averageBall*10]" [style.height.px]="30" [style.background-color]="'red'"></div>
   </div>

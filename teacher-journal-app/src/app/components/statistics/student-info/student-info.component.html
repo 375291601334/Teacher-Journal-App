@@ -1,7 +1,7 @@
 <div class="container">
-  <h2>Student: {{student.name.first}} {{student.name.last}}</h2>
+  <h2>{{'Student' | translate }}: {{student.name.first}} {{student.name.last}}</h2>
 
-  <h3>Average Marks:</h3>
+  <h3>{{'Average Mark' | translate }}:</h3>
 
   <div>
     <div *ngFor='let subject of subjects; let i = index;'>

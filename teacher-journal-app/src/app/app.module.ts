@@ -23,17 +23,24 @@ import { StudentsListComponent } from "./components/statistics/students-list/stu
 import { SubjectsListComponent } from "./components/statistics/subjects-list/subjects-list.component";
 import { SubjectInfoComponent } from "./components/statistics/subject-info/subject-info.component";
 import { StudentInfoComponent } from "./components/statistics/student-info/student-info.component";
+import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
 
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 import { effects } from "./redux/effects/combineEffects";
 import { reducers } from "./redux/reducers/combineReducers";
 
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { SortPipe } from "./common/pipes/sort.pipe";
 import { ValidateMarkDirective } from "./common/directives/validate-mark.directive";
 import { ValidateDateDirective } from "./common/directives/validate-date.directive";
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+
+import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
+import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -59,6 +66,13 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+  }),
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import {TranslateService} from "@ngx-translate/core";
 import { Store } from "@ngrx/store";
 import { State } from "../redux/reducers/combineReducers";
 import { LoadSubjects } from "src/app/redux/actions/subjects.actions";
@@ -10,7 +11,10 @@ import { LoadStudents } from "src/app/redux/actions/students.actions";
   styleUrls: ["./app.component.less"]
 })
 export class AppComponent {
-  constructor(private store: Store<State>) {
+  constructor(private store: Store<State>, private translate: TranslateService) {
+    translate.setDefaultLang("en");
+    translate.use("ru");
+
     store.dispatch(new LoadSubjects());
     store.dispatch(new LoadStudents());
   }

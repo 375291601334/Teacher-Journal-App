@@ -2,7 +2,7 @@
 <table *ngIf="students">
   <thead>
     <td *ngFor="let column of tableColumns">
-      {{column.name}}
+      {{column.name | translate }}
       <mat-icon *ngIf="!isDesc" [ngClass]="{'sorted': sortingField === column.field}" class="sort-button-down" (click)='setDescSortingField(column.field)'>arrow_drop_down</mat-icon>
       <mat-icon *ngIf="isDesc" [ngClass]="{'sorted': sortingField === column.field}" class="sort-button-up" (click)='setAscSortingField(column.field)'>arrow_drop_up</mat-icon>
     </td>

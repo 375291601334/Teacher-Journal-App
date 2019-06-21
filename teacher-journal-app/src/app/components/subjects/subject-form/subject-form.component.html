@@ -1,36 +1,36 @@
 <h2>
-    Add new subject:
+    {{'Add new subject' | translate }}:
   </h2>
   
   <form [formGroup]="subjectForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label>*Name:</label>
+      <label>*{{'Name' | translate }}:</label>
       <input type="text" formControlName="name" required [ngClass]="{'is-invalid': subjectForm.get('name').touched && subjectForm.get('name').invalid}">
       <div class='validation-message' *ngIf="subjectForm.get('name').touched && subjectForm.get('name').invalid">
-        Name must be entered!
+        {{'Field' | translate }} {{'Name' | translate }} {{'must be entered' | translate }}!
       </div>
     </div>
 
     <div class="form-group">
-      <label>*Teacher:</label>
+      <label>*{{'Teacher' | translate }}:</label>
       <input type="text" formControlName="teacher" required [ngClass]="{'is-invalid': subjectForm.get('teacher').touched && subjectForm.get('teacher').invalid}">
       <div class='validation-message' *ngIf="subjectForm.get('teacher').touched && subjectForm.get('teacher').invalid">
-        Teacher must be entered!
+        {{'Field' | translate }} {{'Teacher' | translate }} {{'must be entered' | translate }}!
       </div>
     </div>
 
     <div class="form-group">
-      <label>Cabiner:</label>
+      <label>{{'Cabiner' | translate }}:</label>
       <input type="text" formControlName="cabiner">
       <div class='validation-message' *ngIf="subjectForm.get('cabiner').touched && subjectForm.get('cabiner').invalid">
-        Cabiner must be numeric!
+        {{'Field' | translate }} {{'Cabiner' | translate }} {{'must be numeric' | translate }}!
       </div>
     </div>
   
     <div class="form-group">
-      <label>Description:</label>
+      <label>{{'Description' | translate }}:</label>
       <textarea formControlName="description"></textarea>
     </div>
   
-    <input type="submit" [disabled]="!subjectForm.valid" value='Add'>
+    <button type="submit" [disabled]="!subjectForm.valid">{{'Add' | translate}}</button>
   </form>

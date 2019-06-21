@@ -2,19 +2,19 @@
 <table>
   <thead>
     <td *ngFor="let column of tableColumns">
-      {{column}}
+      {{column | translate }}
     </td>
     <td class="dates" *ngFor="let marksOnDate of newSubject.marks; let i = index">
       <input 
       type="date" 
-      [name]="'date'+[i]" 
+      [name]="'date'+[i]"
       appValidateDate
       [marks]="newSubject.marks"
       required
       [(ngModel)]="marksOnDate.date">
     </td>
     <td class="add-column-sign">
-      <mat-icon title="Add colunm with new date" (click)="addColumn()">add</mat-icon>
+      <mat-icon title="{{ 'Add colunm with new date' | translate}}" (click)="addColumn()">add</mat-icon>
     </td>
   </thead>
   <tbody>
@@ -36,9 +36,9 @@
       
 
 <div>
-  <label>Teacher:</label>
+  <label>{{'Teacher' | translate }}:</label>
   <input type="text" name="teacher" [(ngModel)]="newSubject.teacher" required>
 </div>  
 
-<button type="submit" (click)="saveChanges()" [disabled]="!tableForm.form.valid">Save</button>
+<button type="submit" (click)="saveChanges()" [disabled]="!tableForm.form.valid">{{'Save' | translate }}</button>
 </form>
