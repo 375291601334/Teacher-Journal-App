@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import {MatButtonModule} from "@angular/material";
 import {MatIconModule} from "@angular/material/icon";
 import {MatChipsModule} from "@angular/material/chips";
+import {MatSelectModule} from "@angular/material/select";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./root/app.component";
@@ -79,6 +80,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     MatButtonModule,
     MatIconModule,
     MatChipsModule,
+    MatSelectModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot(effects),
     HttpClientModule

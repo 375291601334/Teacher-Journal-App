@@ -23,8 +23,8 @@
     "Average Mark": "Средний балл",
     "Save": "Сохранить",
     "Add colunm with new date": "Добавить колонку с новой датой",
+    "Language": "Язык",
     "This date is not unique!!!": "эта дата уже есть",
     "Do you want to leave without saving? ALL YOUR CHANGES WILL BE CANCELED!!!": "123",
-    "Mark must be between ${MIN_MARK} and ${MAX_MARK}!!!": "",
-    "": ""
+    "Mark must be between ${MIN_MARK} and ${MAX_MARK}!!!": ""
 }

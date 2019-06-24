@@ -11,10 +11,13 @@ import { LoadStudents } from "src/app/redux/actions/students.actions";
   styleUrls: ["./app.component.less"]
 })
 export class AppComponent {
+  public languages: {value: string, viewValue: string}[] = [
+    {value: "en", viewValue: "En"},
+    {value: "ru", viewValue: "Ru"}
+  ];
+
   constructor(private store: Store<State>, private translate: TranslateService) {
     translate.setDefaultLang("en");
-    translate.use("ru");
-
     store.dispatch(new LoadSubjects());
     store.dispatch(new LoadStudents());
   }
