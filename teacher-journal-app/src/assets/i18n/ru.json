@@ -24,7 +24,7 @@
     "Save": "Сохранить",
     "Add colunm with new date": "Добавить колонку с новой датой",
     "Language": "Язык",
-    "This date is not unique!!!": "эта дата уже есть",
-    "Do you want to leave without saving? ALL YOUR CHANGES WILL BE CANCELED!!!": "123",
-    "Mark must be between ${MIN_MARK} and ${MAX_MARK}!!!": ""
+    "This date is not unique!!!": "Такая дата уже есть!!!",
+    "Do you want to leave without saving? ALL YOUR CHANGES WILL BE CANCELED!!!": "Вы хотите уйти, не сохранив текущие изменения? ВСЕ ИЗМЕНЕНИЯ БУДУТ УТЕРЯНЫ!!!",
+    "Mark must be between": "Значение оценки должно варьироваться между"
 }
