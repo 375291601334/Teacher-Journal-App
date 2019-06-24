@@ -22,7 +22,7 @@ export class ValidateMarkDirective  {
       (result: string) => {
         message = result;
       });
-    
+
     if (inputValue > MAX_MARK || inputValue < MIN_MARK) {
       this.renderer.setAttribute(this.el.nativeElement, "title", `${message} ${MIN_MARK} ... ${MAX_MARK}!!!`);
       return { appValidateMark: true };

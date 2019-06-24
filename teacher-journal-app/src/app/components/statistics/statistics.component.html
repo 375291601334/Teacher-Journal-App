@@ -1,3 +1,54 @@
+<div>
+  <div class="dropdown-list" >
+    <span (click)="onClick($event)">01/01/01</span>
+    <div class="dropdown-content">
+      <button (click)="checkAllClick($event)">{{'Check all' | uppercase }}</button>
+      <button (click)="uncheckAllClick($event)">{{'Uncheck all' | uppercase }}</button>
+
+      <ul *ngFor="let subject of subjects" class="subject-dates-list">
+        <label (click)="onSbujectClick($event)">
+          <mat-icon>arrow_right</mat-icon>
+          <input type="checkbox" [name]="subject.name">{{subject.name}}
+        </label>
+        <li *ngFor="let marksObj of subject.marks">
+          <input type="checkbox" [value]="marksObj.date" (change)="check($event, subject.name)"/>{{marksObj.date}}
+        </li>
+      </ul>
+
+      <button>{{'Expand all' | uppercase }}</button>
+      <button>{{'Collapse all' | uppercase }}</button>
+      <button>{{'Close' | uppercase }}</button>
+    </div>
+  </div>
+
+    <div *ngFor="let subjectName of selectedSubjects">
+      <table>
+        <thead>
+          <td>Students:</td>
+          <td *ngFor="let dateStr of selectedItems[subjectName].dates">{{dateStr}}</td>
+        </thead>
+        <tbody>
+          <tr *ngFor="let id of selectedItems[subjectName].studentsId">
+            <td>{{students[id].name.first}} {{students[id].name.last}}</td>
+            <td *ngFor="let dateStr of selectedItems[subjectName].dates">
+              <ng-container *ngFor="let subject of subjects">
+                <ng-container *ngIf="subject.name === subjectName">
+                  <ng-container *ngFor="let marksObj of subject.marks">
+                    <ng-container *ngIf="marksObj.date === dateStr">
+                      <p>{{marksObj.studentsMarks[id]}}</p>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+</div>
+
+
 <div class='container'>
     <nav>
       <a [routerLink]="['students']" routerLinkActive="active">{{'Students' | translate }}</a>
@@ -5,5 +56,4 @@
     </nav>
     
     <router-outlet></router-outlet>
-
 </div>
