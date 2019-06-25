@@ -26,5 +26,11 @@
     "Add colunm with new date": "Add colunm with new date",
     "This date is not unique!!!": "This date is not unique!!!",
     "Do you want to leave without saving? ALL YOUR CHANGES WILL BE CANCELED!!!": "Do you want to leave without saving? ALL YOUR CHANGES WILL BE CANCELED!!!",
-    "Mark must be between ${MIN_MARK} and ${MAX_MARK}!!!": "Mark must be between ${MIN_MARK} and ${MAX_MARK}!!!"
+    "Mark must be between ${MIN_MARK} and ${MAX_MARK}!!!": "Mark must be between ${MIN_MARK} and ${MAX_MARK}!!!",
+    "Check all": "Check all",
+    "Uncheck all": "Uncheck all",
+    "Expand all": "Expand all",
+    "Collapse all": "Collapse all",
+    "Close": "Close",
+    "select subjects and dates for statistics": "select subjects and dates for statistics"
 }

@@ -1,9 +1,9 @@
 <div class="dropdown-component-container">
   <div class="dropdown-list" >
-    <span (click)="onDropdownClick($event)">{{dropdownTitle}}</span>
+    <span (click)="onDropdownClick($event)">{{dropdownTitle | translate }}</span>
     <div class="dropdown-content">
-      <button (click)="checkAllClick($event)">{{'Check all' | uppercase }}</button>
-      <button (click)="uncheckAllClick($event)">{{'Uncheck all' | uppercase }}</button>
+      <button (click)="checkAllClick($event)">{{'Check all' | translate  | uppercase}}</button>
+      <button (click)="uncheckAllClick($event)">{{'Uncheck all' | translate  | uppercase}}</button>
 
       <ul *ngFor="let subject of subjects" class="subject-dates-list">
         <label (click)="$event.preventDefault(); onSbujectDropdownClick($event)">
@@ -15,9 +15,9 @@
         </li>
       </ul>
 
-      <button (click)="expand()">{{'Expand all' | uppercase }}</button>
-      <button (click)="collapse()">{{'Collapse all' | uppercase }}</button>
-      <button (click)="close()" class="close-button">{{'Close' | uppercase }}</button>
+      <button (click)="expand()">{{'Expand all' | translate  | uppercase}}</button>
+      <button (click)="collapse()">{{'Collapse all' | translate  | uppercase}}</button>
+      <button (click)="close()" class="close-button">{{'Close' | translate  | uppercase}}</button>
     </div>
   </div>
 
@@ -26,7 +26,7 @@
       <p>{{subjectName}}</p>
       <table>
         <thead>
-          <td>Students:</td>
+          <td>{{'Students' | translate}}:</td>
           <td *ngFor="let date of dataForDropdown[subjectName].dates">{{date}}</td>
         </thead>
         <tbody>

@@ -26,5 +26,11 @@
     "Language": "Язык",
     "This date is not unique!!!": "Такая дата уже есть!!!",
     "Do you want to leave without saving? ALL YOUR CHANGES WILL BE CANCELED!!!": "Вы хотите уйти, не сохранив текущие изменения? ВСЕ ИЗМЕНЕНИЯ БУДУТ УТЕРЯНЫ!!!",
-    "Mark must be between": "Значение оценки должно варьироваться между"
+    "Mark must be between": "Значение оценки должно варьироваться между",
+    "Check all": "Выбрать всё",
+    "Uncheck all": "Отменить всё",
+    "Expand all": "Свернуть всё",
+    "Collapse all": "Развернуть всё",
+    "Close": "Закрыть",
+    "select subjects and dates for statistics": "выбрать предметы и даты для статистики"
 }
