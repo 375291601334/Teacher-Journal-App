@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { SaveChangesDialogService } from "../../../../common/services/save-changes-dialog.service";
-import { AverageMarksCalculationsService } from "../../../../common/services/average-marks-calculations.service";
+import { SaveChangesDialogService } from "../../../../common/services/dialog-window-service/save-changes-dialog.service";
+import { AverageMarksCalculationsService } from "../../../../common/services/average-marks-calculations/average-marks-calculations.service";
 import { Student } from "src/app/common/classes/student";
 import { Subject, Marks } from "src/app/common/classes/subject";
 

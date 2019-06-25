@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { retry } from "rxjs/operators";
-import { Student } from "../classes/student";
+import { Student } from "../../classes/student";
 import { catchError } from "rxjs/operators";
 
 @Injectable({

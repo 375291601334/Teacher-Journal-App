@@ -1,0 +1,41 @@
+<div class="dropdown-component-container">
+  <div class="dropdown-list" >
+    <span (click)="onDropdownClick($event)">{{dropdownTitle}}</span>
+    <div class="dropdown-content">
+      <button (click)="checkAllClick($event)">{{'Check all' | uppercase }}</button>
+      <button (click)="uncheckAllClick($event)">{{'Uncheck all' | uppercase }}</button>
+
+      <ul *ngFor="let subject of subjects" class="subject-dates-list">
+        <label (click)="$event.preventDefault(); onSbujectDropdownClick($event)">
+          <mat-icon>arrow_right</mat-icon>
+          <input type="checkbox" [name]="subject.name">{{subject.name}}
+        </label>
+        <li *ngFor="let marksObj of subject.marks">
+          <input type="checkbox" [value]="marksObj.date" (change)="$event.preventDefault(); toggleCheckData($event, subject.name)"/>{{marksObj.date}}
+        </li>
+      </ul>
+
+      <button (click)="expand()">{{'Expand all' | uppercase }}</button>
+      <button (click)="collapse()">{{'Collapse all' | uppercase }}</button>
+      <button (click)="close()" class="close-button">{{'Close' | uppercase }}</button>
+    </div>
+  </div>
+
+  <div class="dropdown-results" *ngIf="selectedSubjects">
+    <div *ngFor="let subjectName of selectedSubjects">
+      <p>{{subjectName}}</p>
+      <table>
+        <thead>
+          <td>Students:</td>
+          <td *ngFor="let date of dataForDropdown[subjectName].dates">{{date}}</td>
+        </thead>
+        <tbody>
+          <tr *ngFor="let id of getStudentsId(subjectName)">
+            <td>{{dataForDropdown[subjectName].students[id].name}}</td>
+            <td *ngFor="let mark of dataForDropdown[subjectName].students[id].marks">{{mark}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

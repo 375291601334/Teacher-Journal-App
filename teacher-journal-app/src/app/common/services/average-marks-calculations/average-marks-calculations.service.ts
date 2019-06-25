@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Subject, Marks } from "../../common/classes/subject";
+import { Subject, Marks } from "../../classes/subject";
 
 @Injectable({
   providedIn: "root"

@@ -4,7 +4,7 @@ import { Actions, Effect, ofType } from "@ngrx/effects";
 import { Observable, of } from "rxjs";
 import { switchMap, map, catchError } from "rxjs/operators";
 import { LOAD_STUDENTS, LoadStudentsSuccess, LoadStudentsFail } from "../actions/students.actions";
-import { DataService } from "../../common/services/data.service";
+import { DataService } from "../../common/services/data-service/data.service";
 
 @Injectable()
 

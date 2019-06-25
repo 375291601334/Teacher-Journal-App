@@ -38,6 +38,7 @@ import { ValidateDateDirective } from "./common/directives/validate-date.directi
 
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import { DropdownComponent } from "./components/dropdown/dropdown.component";
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -62,7 +63,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     SortPipe,
     ValidateMarkDirective,
     ValidateDateDirective,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    DropdownComponent
   ],
   imports: [
     BrowserModule,

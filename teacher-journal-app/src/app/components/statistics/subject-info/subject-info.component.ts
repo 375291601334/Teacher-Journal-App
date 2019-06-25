@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Subject } from "src/app/common/classes/subject";
-import { AverageMarksCalculationsService } from "../../../common/services/average-marks-calculations.service";
+import { AverageMarksCalculationsService } from "../../../common/services/average-marks-calculations/average-marks-calculations.service";
 
 import { Store } from "@ngrx/store";
 import { State } from "../../../redux/reducers/combineReducers";
