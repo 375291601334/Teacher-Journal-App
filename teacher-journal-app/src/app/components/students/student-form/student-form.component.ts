@@ -7,7 +7,10 @@ import { Store } from "@ngrx/store";
 import { State } from "../../../redux/reducers/combineReducers";
 import { selectStudents } from "../../../redux/selectors/students.selectors";
 import * as fromStudents from "../../../redux/actions/students.actions";
+import * as fromSubjetcs from "../../../redux/actions/subjects.actions";
 import { Router } from "@angular/router";
+import { selectSubjects } from "../../../redux/selectors/subjects.selectors";
+import { Subject } from "../../../common/classes/subject";
 
 @Component({
   selector: "app-student-form",
@@ -18,10 +21,13 @@ import { Router } from "@angular/router";
 export class StudentFormComponent implements OnInit {
   public studentForm: FormGroup;
   public nextStudentId: number;
+  public subjects: Subject[];
 
   constructor(private fb: FormBuilder, private store: Store<State>, private router: Router) {
     store.select(selectStudents)
          .subscribe( students => this.nextStudentId = students.length);
+    store.select(selectSubjects)
+         .subscribe( (subjects) => this.subjects = subjects );
   }
 
   public ngOnInit(): void {
@@ -43,6 +49,14 @@ export class StudentFormComponent implements OnInit {
       this.studentForm.value.address,
       this.studentForm.value.description
     );
+
+    this.subjects.forEach( subject => {
+      subject.marks.forEach( marksObj => {
+        marksObj.studentsMarks[this.nextStudentId] = null;
+      });
+      this.store.dispatch(new fromSubjetcs.UpdateSubject(subject));
+    });
+
     this.store.dispatch(new fromStudents.AddStudent(newStudent));
     this.studentForm.reset();
     this.router.navigate(["/students"]);

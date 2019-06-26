@@ -88,7 +88,6 @@ export class SubjectTableComponent implements OnInit {
   }
 
   public saveChanges(): void {
-    console.log(this.oldSubject, this.newSubject);
     if (JSON.stringify(this.oldSubject) !== JSON.stringify(this.newSubject)) {
       this.store.dispatch(new UpdateSubject(this.newSubject));
       this.newSubject = JSON.parse(JSON.stringify(this.oldSubject));

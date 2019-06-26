@@ -6,6 +6,7 @@ import { Store } from "@ngrx/store";
 import { State } from "../../../redux/reducers/combineReducers";
 import * as fromSubjects from "../../../redux/actions/subjects.actions";
 import { Router } from "@angular/router";
+import { selectStudents } from "../../../redux/selectors/students.selectors";
 
 @Component({
   selector: "app-subject-form",
@@ -14,10 +15,12 @@ import { Router } from "@angular/router";
 })
 export class SubjectFormComponent implements OnInit {
   public subjectForm: FormGroup;
+  public studentsNumber: number;
 
   constructor(private store: Store<State>,
               private fb: FormBuilder,
               private router: Router) {
+    store.select(selectStudents).subscribe( students => this.studentsNumber = students.length);
   }
 
   public ngOnInit(): void {
@@ -30,16 +33,20 @@ export class SubjectFormComponent implements OnInit {
   }
 
   public onSubmit(): void {
+    let nullMarks: null[] = [];
+    for (let i: number; i < this.studentsNumber; i++) {
+      nullMarks.push(null);
+    }
     let newSubject: Subject = new Subject(
       this.subjectForm.value.name,
       this.subjectForm.value.teacher,
       this.subjectForm.value.cabiner,
       this.subjectForm.value.description,
       [
-        new Marks("2019-06-01", []),
-        new Marks("2019-06-02", []),
-        new Marks("2019-06-03", []),
-        new Marks("2019-06-04", []),
+        new Marks("2019-06-01", nullMarks),
+        new Marks("2019-06-02", nullMarks),
+        new Marks("2019-06-03", nullMarks),
+        new Marks("2019-06-04", nullMarks),
       ]
     );
 
