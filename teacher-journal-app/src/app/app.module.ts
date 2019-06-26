@@ -25,6 +25,8 @@ import { SubjectsListComponent } from "./components/statistics/subjects-list/sub
 import { SubjectInfoComponent } from "./components/statistics/subject-info/subject-info.component";
 import { StudentInfoComponent } from "./components/statistics/student-info/student-info.component";
 import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
+import { DropdownComponent } from "./components/dropdown/dropdown.component";
+import { PopupComponent } from "./components/popup/popup.component";
 
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
@@ -35,10 +37,10 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { SortPipe } from "./common/pipes/sort.pipe";
 import { ValidateMarkDirective } from "./common/directives/validate-mark.directive";
 import { ValidateDateDirective } from "./common/directives/validate-date.directive";
+import { PopupDirective } from "./common/directives/popup/popup.directive";
 
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
-import { DropdownComponent } from "./components/dropdown/dropdown.component";
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -64,7 +66,9 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     ValidateMarkDirective,
     ValidateDateDirective,
     PageNotFoundComponent,
-    DropdownComponent
+    DropdownComponent,
+    PopupComponent,
+    PopupDirective
   ],
   imports: [
     BrowserModule,
@@ -88,6 +92,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     HttpClientModule
   ],
   providers: [ SortPipe ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ PopupComponent ]
 })
 export class AppModule { }

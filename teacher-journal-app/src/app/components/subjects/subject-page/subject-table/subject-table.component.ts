@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, ComponentFactoryResolver } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { SaveChangesDialogService } from "../../../../common/services/dialog-window-service/save-changes-dialog.service";
 import { AverageMarksCalculationsService } from "../../../../common/services/average-marks-calculations/average-marks-calculations.service";
@@ -11,6 +11,8 @@ import { State } from "../../../../redux/reducers/combineReducers";
 import { selectStudents } from "../../../../redux/selectors/students.selectors";
 import { selectSubjects } from "../../../../redux/selectors/subjects.selectors";
 import { UpdateSubject } from "../../../../redux/actions/subjects.actions";
+import { PopupDirective } from "../../../../common/directives/popup/popup.directive";
+import { PopupComponent } from 'src/app/components/popup/popup.component';
 
 @Component({
   selector: "app-subject-table",
@@ -19,6 +21,8 @@ import { UpdateSubject } from "../../../../redux/actions/subjects.actions";
 })
 
 export class SubjectTableComponent implements OnInit {
+  @ViewChild(PopupDirective, {static: true}) public adHost: PopupDirective;
+
   // @Select studentSelectState
   public students: Student[];
   public oldSubject: Subject;
@@ -26,11 +30,13 @@ export class SubjectTableComponent implements OnInit {
   public subjectName: string;
   public averageMarks: number[];
   public tableColumns: string[] = ["Name", "Last Name", "Average Mark"];
+  public message: string;
 
   constructor(public route: ActivatedRoute,
               private store: Store<State>,
               private dialogService: SaveChangesDialogService,
-              private averageMarksCalculations: AverageMarksCalculationsService) {
+              private averageMarksCalculations: AverageMarksCalculationsService,
+              private componentFactoryResolver: ComponentFactoryResolver) {
 
     this.route.params
       .subscribe(params => {
@@ -85,6 +91,9 @@ export class SubjectTableComponent implements OnInit {
     if (JSON.stringify(this.oldSubject) !== JSON.stringify(this.newSubject)) {
       this.oldSubject = JSON.parse(JSON.stringify(this.newSubject));
       this.store.dispatch(new UpdateSubject(this.newSubject));
+      this.showPopup("Saved successfully!");
+    } else {
+      this.showPopup("There is nothing to save!");
     }
   }
 
@@ -98,6 +107,20 @@ export class SubjectTableComponent implements OnInit {
     } else {
       return true;
     }
+  }
+
+  public showPopup(message: string): void {
+    const componentFactory: any = this.componentFactoryResolver.resolveComponentFactory(PopupComponent);
+
+    const viewContainerRef: any = this.adHost.viewContainerRef;
+    viewContainerRef.clear();
+
+    const componentRef: any = viewContainerRef.createComponent(componentFactory);
+    (<PopupComponent>componentRef.instance).text = message;
+    const timeout: any = setTimeout(() => {
+      componentRef.destroy();
+      clearTimeout(timeout);
+    }, 2000);
   }
 
 }
