@@ -5,7 +5,8 @@ import { Component, Input } from "@angular/core";
   templateUrl: "./popup.component.html",
   styleUrls: ["./popup.component.less"]
 })
-export class PopupComponent implements Input {
+
+export class PopupComponent {
   @Input() public text: string;
 
 }

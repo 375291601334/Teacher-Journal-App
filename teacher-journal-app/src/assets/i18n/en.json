@@ -32,5 +32,7 @@
     "Expand all": "Expand all",
     "Collapse all": "Collapse all",
     "Close": "Close",
-    "select subjects and dates for statistics": "select subjects and dates for statistics"
+    "select subjects and dates for statistics": "select subjects and dates for statistics",
+    "There is nothing to save!": "There is nothing to save!",
+    "Saved successfully!": "Saved successfully!"
 }

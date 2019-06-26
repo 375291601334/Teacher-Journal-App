@@ -12,7 +12,7 @@ import { selectStudents } from "../../../../redux/selectors/students.selectors";
 import { selectSubjects } from "../../../../redux/selectors/subjects.selectors";
 import { UpdateSubject } from "../../../../redux/actions/subjects.actions";
 import { PopupDirective } from "../../../../common/directives/popup/popup.directive";
-import { PopupComponent } from 'src/app/components/popup/popup.component';
+import { PopupComponent } from "../../../../components/popup/popup.component";
 
 @Component({
   selector: "app-subject-table",
@@ -88,9 +88,10 @@ export class SubjectTableComponent implements OnInit {
   }
 
   public saveChanges(): void {
+    console.log(this.oldSubject, this.newSubject);
     if (JSON.stringify(this.oldSubject) !== JSON.stringify(this.newSubject)) {
-      this.oldSubject = JSON.parse(JSON.stringify(this.newSubject));
       this.store.dispatch(new UpdateSubject(this.newSubject));
+      this.newSubject = JSON.parse(JSON.stringify(this.oldSubject));
       this.showPopup("Saved successfully!");
     } else {
       this.showPopup("There is nothing to save!");

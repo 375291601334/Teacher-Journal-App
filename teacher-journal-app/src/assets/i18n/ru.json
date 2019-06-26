@@ -32,5 +32,7 @@
     "Expand all": "Свернуть всё",
     "Collapse all": "Развернуть всё",
     "Close": "Закрыть",
-    "select subjects and dates for statistics": "выбрать предметы и даты для статистики"
+    "select subjects and dates for statistics": "выбрать предметы и даты для статистики",
+    "There is nothing to save!": "Нет изменений, которые можно было бы сохранить!",
+    "Saved successfully!": "Сохранено успешно!"
 }
