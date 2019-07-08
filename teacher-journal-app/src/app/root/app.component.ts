@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import {TranslateService} from "@ngx-translate/core";
+import { TranslateService } from "@ngx-translate/core";
 import { Store } from "@ngrx/store";
 import { State } from "../redux/reducers/combineReducers";
 import { LoadSubjects } from "src/app/redux/actions/subjects.actions";

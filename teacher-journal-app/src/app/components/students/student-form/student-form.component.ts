@@ -11,6 +11,7 @@ import * as fromSubjetcs from "../../../redux/actions/subjects.actions";
 import { Router } from "@angular/router";
 import { selectSubjects } from "../../../redux/selectors/subjects.selectors";
 import { Subject } from "../../../common/classes/subject";
+import { DataService } from "../../../common/services/data-service/data.service";
 
 @Component({
   selector: "app-student-form",
@@ -23,7 +24,7 @@ export class StudentFormComponent implements OnInit {
   public nextStudentId: number;
   public subjects: Subject[];
 
-  constructor(private fb: FormBuilder, private store: Store<State>, private router: Router) {
+  constructor(private fb: FormBuilder, private store: Store<State>, private router: Router, private dataService: DataService) {
     store.select(selectStudents)
          .subscribe( students => this.nextStudentId = students.length);
     store.select(selectSubjects)
@@ -54,10 +55,18 @@ export class StudentFormComponent implements OnInit {
       subject.marks.forEach( marksObj => {
         marksObj.studentsMarks[this.nextStudentId] = null;
       });
-      this.store.dispatch(new fromSubjetcs.UpdateSubject(subject));
+      this.dataService.updateSubject(subject)
+                    .subscribe(status =>
+                      this.store.dispatch(new fromSubjetcs.UpdateSubject(subject))
+                      );
     });
 
-    this.store.dispatch(new fromStudents.AddStudent(newStudent));
+    this.dataService.addNewStudent(newStudent)
+                    .subscribe(status => {
+                      if (status.ok === 1) {
+                      this.store.dispatch(new fromStudents.AddStudent(newStudent));
+                      }
+                     });
     this.studentForm.reset();
     this.router.navigate(["/students"]);
   }

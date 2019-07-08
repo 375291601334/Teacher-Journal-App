@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild, ComponentFactoryResolver } from "@angular
 import { ActivatedRoute } from "@angular/router";
 import { SaveChangesDialogService } from "../../../../common/services/dialog-window-service/save-changes-dialog.service";
 import { AverageMarksCalculationsService } from "../../../../common/services/average-marks-calculations/average-marks-calculations.service";
-import { Student } from "src/app/common/classes/student";
-import { Subject, Marks } from "src/app/common/classes/subject";
+import { Student } from "../../../../common/classes/student";
+import { Subject } from "../../../../common/classes/subject";
 
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
@@ -13,6 +13,8 @@ import { selectSubjects } from "../../../../redux/selectors/subjects.selectors";
 import { UpdateSubject } from "../../../../redux/actions/subjects.actions";
 import { PopupDirective } from "../../../../common/directives/popup/popup.directive";
 import { PopupComponent } from "../../../../components/popup/popup.component";
+import getNextMaxDate from "../../../../common/helpers/getNextMaxDate";
+import { DataService } from "../../../../common/services/data-service/data.service";
 
 @Component({
   selector: "app-subject-table",
@@ -23,7 +25,6 @@ import { PopupComponent } from "../../../../components/popup/popup.component";
 export class SubjectTableComponent implements OnInit {
   @ViewChild(PopupDirective, {static: true}) public adHost: PopupDirective;
 
-  // @Select studentSelectState
   public students: Student[];
   public oldSubject: Subject;
   public newSubject: Subject;
@@ -36,22 +37,19 @@ export class SubjectTableComponent implements OnInit {
               private store: Store<State>,
               private dialogService: SaveChangesDialogService,
               private averageMarksCalculations: AverageMarksCalculationsService,
-              private componentFactoryResolver: ComponentFactoryResolver) {
+              private componentFactoryResolver: ComponentFactoryResolver,
+              private dataService: DataService) {
 
     this.route.params
       .subscribe(params => {
         this.subjectName = params.id;
       });
-
-    this.students = [];
-    this.averageMarks = [];
   }
 
   public ngOnInit(): void {
     this.store.select(selectStudents)
-        .subscribe( students => this.students = students);
+              .subscribe( students => this.students = students);
 
-    // studentSelectState.subscribe
     this.store.select(selectSubjects)
         .subscribe( (subjects) =>
                     [this.oldSubject] = subjects.filter( (subject: Subject) => (subject.name === this.subjectName))
@@ -60,25 +58,10 @@ export class SubjectTableComponent implements OnInit {
 
     this.averageMarks = this.students
                             .map( (student: Student) =>
-                                  this.averageMarksCalculations.getStudentAverageBall(student.id, this.newSubject));
+                                  this.averageMarksCalculations.getStudentAverageBall(student._id, this.newSubject));
   }
 
   public addColumn(): void {
-
-    function getNextMaxDate(marks: Marks[]): string {
-      let max: Date = marks.reduce(
-        (maxdate: Date, marksObj: Marks) => {
-          if ( new Date(marksObj.date) > maxdate ) {
-            maxdate = new Date(marksObj.date);
-          }
-          return maxdate;
-        },
-        new Date("01.01.2019"));
-
-      max.setDate(max.getDate() + 1);
-      return new Date(max).toJSON().slice(0, 10);
-    }
-
     this.newSubject.marks = [...this.newSubject.marks,
       {
         date: getNextMaxDate(this.newSubject.marks),
@@ -89,9 +72,12 @@ export class SubjectTableComponent implements OnInit {
 
   public saveChanges(): void {
     if (JSON.stringify(this.oldSubject) !== JSON.stringify(this.newSubject)) {
-      this.store.dispatch(new UpdateSubject(this.newSubject));
-      this.newSubject = JSON.parse(JSON.stringify(this.oldSubject));
-      this.showPopup("Saved successfully!");
+      this.dataService.updateSubject(this.newSubject)
+      .subscribe(status => {
+          this.store.dispatch(new UpdateSubject(this.newSubject));
+          this.newSubject = JSON.parse(JSON.stringify(this.oldSubject));
+          this.showPopup("Saved successfully!");
+        });
     } else {
       this.showPopup("There is nothing to save!");
     }
@@ -102,11 +88,9 @@ export class SubjectTableComponent implements OnInit {
   }
 
   public canDeactivate(): Observable<boolean> | boolean {
-    if (JSON.stringify(this.oldSubject) !== JSON.stringify(this.newSubject)) {
-      return this.dialogService.confirm();
-    } else {
-      return true;
-    }
+    return (JSON.stringify(this.oldSubject) !== JSON.stringify(this.newSubject))
+            ? this.dialogService.confirm()
+            : true;
   }
 
   public showPopup(message: string): void {
@@ -120,7 +104,7 @@ export class SubjectTableComponent implements OnInit {
     const timeout: any = setTimeout(() => {
       componentRef.destroy();
       clearTimeout(timeout);
-    }, 2000);
+    },                              2000);
   }
 
 }

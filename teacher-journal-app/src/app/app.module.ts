@@ -41,6 +41,7 @@ import { PopupDirective } from "./common/directives/popup/popup.directive";
 
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import { MockTranslatePipe } from './common/pipes/mock-translate.pipe';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);

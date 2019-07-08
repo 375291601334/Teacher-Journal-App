@@ -21,14 +21,14 @@
     <tr *ngFor="let student of students">
       <td>{{ student.name.first }}</td>
       <td>{{ student.name.last }}</td>
-      <td>{{ averageMarks[student.id] }}</td>
+      <td>{{ averageMarks[student._id] }}</td>
       <td class="marks" *ngFor="let marksOnDate of newSubject.marks">
         <input 
         type="number" 
-        [name]="'mark'+[student.id]+'_'+[marksOnDate.date]" 
+        [name]="'mark'+[student._id]+'_'+[marksOnDate.date]" 
         appValidateMark
-        [(ngModel)]="marksOnDate.studentsMarks[student.id]"
-        (change)="onMarkChange(student.id, $event)">
+        [(ngModel)]="marksOnDate.studentsMarks[student._id]"
+        (change)="onMarkChange(student._id, $event)">
       </td>
     </tr>
   </tbody>

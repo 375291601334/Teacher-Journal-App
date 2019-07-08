@@ -1,12 +1,11 @@
 export class Student {
     constructor (
-        public id: number,
+        public _id: number,
         public name: {
             first: string,
             last: string,
         },
         public address: string,
-        public description: string,
-        //public averageBall?: number,
-    ){}
+        public description: string
+    ) { }
 }

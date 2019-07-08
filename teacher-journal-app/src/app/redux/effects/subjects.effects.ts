@@ -13,8 +13,8 @@ export class SubjectsEffects {
     public loadSubjects$: Observable<Action> = this.actions$.pipe(
         ofType(LOAD_SUBJECTS),
         switchMap( () => {
-            return this.service.getJSONData().pipe(
-                map( data => new LoadSubjectsSuccess(data.subjects) ),
+            return this.service.getSubjects().pipe(
+                map( data => new LoadSubjectsSuccess(data) ),
                 catchError( error => of(new LoadSubjectsFail(error)) )
             );
         })

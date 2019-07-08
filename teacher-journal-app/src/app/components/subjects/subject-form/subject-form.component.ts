@@ -1,12 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { Subject, Marks } from "src/app/common/classes/subject";
-
+import { Subject, Marks } from "../../../common/classes/subject";
 import { Store } from "@ngrx/store";
 import { State } from "../../../redux/reducers/combineReducers";
 import * as fromSubjects from "../../../redux/actions/subjects.actions";
 import { Router } from "@angular/router";
 import { selectStudents } from "../../../redux/selectors/students.selectors";
+import { DataService } from "../../../common/services/data-service/data.service";
+import { selectSubjects } from 'src/app/redux/selectors/subjects.selectors';
 
 @Component({
   selector: "app-subject-form",
@@ -16,11 +17,14 @@ import { selectStudents } from "../../../redux/selectors/students.selectors";
 export class SubjectFormComponent implements OnInit {
   public subjectForm: FormGroup;
   public studentsNumber: number;
+  public nextSubjectId: number;
 
   constructor(private store: Store<State>,
+              private dataService: DataService,
               private fb: FormBuilder,
               private router: Router) {
     store.select(selectStudents).subscribe( students => this.studentsNumber = students.length);
+    store.select(selectSubjects).subscribe( subjects => this.nextSubjectId = subjects.length);
   }
 
   public ngOnInit(): void {
@@ -38,6 +42,7 @@ export class SubjectFormComponent implements OnInit {
       nullMarks.push(null);
     }
     let newSubject: Subject = new Subject(
+      this.nextSubjectId,
       this.subjectForm.value.name,
       this.subjectForm.value.teacher,
       this.subjectForm.value.cabiner,
@@ -50,7 +55,13 @@ export class SubjectFormComponent implements OnInit {
       ]
     );
 
-    this.store.dispatch(new fromSubjects.AddSubject(newSubject));
+    console.log(newSubject);
+    this.dataService.addNewSubject(newSubject)
+                    .subscribe(status => {
+                      if (status.ok === 1) {
+                        this.store.dispatch(new fromSubjects.AddSubject(newSubject));
+                      }
+                     });
     this.subjectForm.reset();
     this.router.navigate(["/subjects"]);
   }

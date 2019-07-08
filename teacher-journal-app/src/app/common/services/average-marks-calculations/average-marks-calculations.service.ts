@@ -6,40 +6,34 @@ import { Subject, Marks } from "../../classes/subject";
 })
 export class AverageMarksCalculationsService {
 
+  private addNewMark(sum: number, count: number, newMark: number|null): [number, number] {
+    if (typeof newMark === "number") {
+         sum = sum + newMark;
+         count += 1;
+       }
+    return [ sum, count ];
+  }
+
   public getStudentAverageBall(studentId: number, subject: Subject): number {
-    let sum: number = 0, count: number = 0;
+    let sum: number = 0;
+    let count: number = 0;
 
-    subject.marks.forEach( (marksObj: Marks) => {
-      if (typeof marksObj.studentsMarks[studentId] === "number") {
-        sum = sum + marksObj.studentsMarks[studentId];
-        count += 1;
-      }
+    subject.marks.forEach((marksObj: Marks) => {
+      [ sum, count ] = this.addNewMark(sum, count, marksObj.studentsMarks[studentId]);
     });
-
-    if (count > 0) {
-      return sum / count;
-    } else {
-      return 0;
-    }
+    return count > 0 ? sum / count : 0;
   }
 
   public getSubjectAverageBall(subject: Subject): number {
-    let count: number = 0, sum: number = 0;
+    let count: number = 0;
+    let sum: number = 0;
 
-    subject.marks.forEach( (marksObj: Marks) => {
-        marksObj.studentsMarks.forEach( (mark) => {
-          if (typeof mark === "number") {
-            sum = sum + mark;
-            count += 1;
-          }
-        });
+    subject.marks.forEach((marksObj: Marks) => {
+      marksObj.studentsMarks.forEach((mark) => {
+        [ sum, count ] = this.addNewMark(sum, count, mark);
       });
-
-    if (count > 0) {
-        return (sum / count);
-      } else {
-        return 0;
-      }
+    });
+    return count > 0 ? sum / count : 0;
   }
 
 }

@@ -32,14 +32,14 @@ const routes: Routes = [
       { path: "", redirectTo: "students", pathMatch: "full"},
       { path: "students", component: StudentsListComponent,
       children: [
-          { path: "", redirectTo: "Chaney_Fields", pathMatch: "full" },
+          { path: "", redirectTo: "Lacky_Hanna", pathMatch: "full" },
           { path: ":id", component: StudentInfoComponent, canActivate: [StudentExistGuard] }
         ]
       },
       { path: "subjects", component: SubjectsListComponent,
       children: [
         { path: "", redirectTo: "Math", pathMatch: "full" },
-        { path: ":id", component: SubjectInfoComponent, canActivate: [SubjectExistGuard]}
+        { path: ":id", component: SubjectInfoComponent, canActivate: [SubjectExistGuard] }
       ]
       }
     ]

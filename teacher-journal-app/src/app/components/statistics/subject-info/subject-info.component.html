@@ -1,11 +1,11 @@
 <div class="container">
-  <h2>
+  <h2 *ngIf="subjectName">
     {{subjectName}}
   </h2>
 
   <div>
-    <p>{{'Teacher' | translate }}: {{subject.teacher}}</p>
-    <p>{{'Cabiner' | translate }}: {{subject.cabiner}}</p>
+    <p *ngIf="subject.teacher">{{'Teacher' | translate }}: {{subject.teacher}}</p>
+    <p *ngIf="subject.cabiner">{{'Cabiner' | translate }}: {{subject.cabiner}}</p>
   </div>
 
   <h3>{{'Average Mark' | translate }} ({{averageBall}}):</h3>

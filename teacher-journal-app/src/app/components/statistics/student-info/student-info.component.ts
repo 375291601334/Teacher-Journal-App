@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Student } from "src/app/common/classes/student";
 import { Subject } from "src/app/common/classes/subject";
@@ -23,23 +23,23 @@ export class StudentInfoComponent {
   constructor(public route: ActivatedRoute,
               private averageMarksCalculations: AverageMarksCalculationsService,
               private store: Store<State>) {
-    store.select(selectSubjects)
-            .subscribe( (subjects) => this.subjects = subjects);
+    this.store.select(selectSubjects)
+              .subscribe( (subjects) => this.subjects = subjects);
 
     this.route.params.subscribe(params => {
       this.studentFullName = params.id;
 
-      store.select(selectStudents)
-              .subscribe( students =>
-                          [this.student] = students.filter( student => {
-                            const nameSeparator: number = this.studentFullName.indexOf("_");
-                            const lastName: string = this.studentFullName.slice(0, nameSeparator);
-                            const firstName: string = this.studentFullName.slice(nameSeparator + 1, this.studentFullName.length);
-                            return (student.name.last === lastName && student.name.first === firstName);
-                          }
-      ));
+      this.store.select(selectStudents).subscribe( students =>
+        [this.student] = students.filter( student => {
+          const nameSeparator: number = this.studentFullName.indexOf("_");
+          const lastName: string = this.studentFullName.slice(0, nameSeparator);
+          const firstName: string = this.studentFullName.slice(nameSeparator + 1, this.studentFullName.length);
+          return (student.name.last === lastName && student.name.first === firstName);
+        })
+      );
 
-      this.averageMarks = this.subjects.map( subject => this.averageMarksCalculations.getStudentAverageBall(this.student.id, subject) );
+      this.averageMarks = this.subjects.map( subject => this.averageMarksCalculations.getStudentAverageBall(this.student._id, subject) );
     });
+
   }
 }

@@ -17,7 +17,7 @@ export class StudentsTableComponent {
   public sortingField: string;
   public isDesc: boolean;
   public tableColumns: { name: string; field: string; }[] = [
-    {name: "Id", field: "id"},
+    {name: "Id", field: "_id"},
     {name: "Name", field: "name.first"},
     {name: "Last Name", field: "name.last"},
     {name: "Address", field: "address"},
@@ -26,8 +26,6 @@ export class StudentsTableComponent {
   constructor(private store: Store<State>, private sortPipe: SortPipe) {
     this.store.select(selectStudents)
          .subscribe( students => this.students = students);
-    this.sortingField = "id";
-    this.isDesc = false;
   }
 
   public setDescSortingField(field: string): void {
