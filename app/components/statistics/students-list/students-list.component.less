@@ -1,0 +1,30 @@
+@import '../../../../styles/variables.less';
+
+.container {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    padding: 0;
+}
+
+.list {
+    width: 230px;
+}
+
+.info {
+    margin-top: -45px;
+    padding: 10px 50px;
+    border: 3px solid @font-color;
+}
+
+.student-tab {
+    margin: 0;
+    padding: 5px 55px;
+    border: 3px solid @font-color;
+    text-align: center;
+}
+
+.student-tab:hover, .active {
+    font-weight: bold;
+    background-color: @acsent-color;
+}

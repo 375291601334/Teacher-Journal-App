@@ -1,0 +1,9 @@
+<app-dropdown></app-dropdown>
+<div class='container'>
+    <nav>
+      <a [routerLink]="['students']" routerLinkActive="active">{{'Students' | translate }}</a>
+      <a [routerLink]="['subjects']" routerLinkActive="active">{{'Subjects' | translate }}</a>
+    </nav>
+    
+    <router-outlet></router-outlet>
+</div>
