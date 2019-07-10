@@ -4,11 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "node server",
-    "build": "ng build --prod --base-href ./",
+    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --prod --base-href ./"
+    "postinstall": "ng build --prod --aot"
   },
   "private": true,
   "dependencies": {
