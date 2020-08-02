@@ -1,0 +1,46 @@
+<form #tableForm="ngForm">
+<table>
+  <thead>
+    <td *ngFor="let column of tableColumns">
+      {{column | translate }}
+    </td>
+    <td class="dates" *ngFor="let marksOnDate of newSubject.marks; let i = index">
+      <input 
+      type="date" 
+      [name]="'date'+[i]"
+      appValidateDate
+      [marks]="newSubject.marks"
+      required
+      [(ngModel)]="marksOnDate.date">
+    </td>
+    <td class="add-column-sign">
+      <mat-icon title="{{ 'Add colunm with new date' | translate}}" (click)="addColumn()">add</mat-icon>
+    </td>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students">
+      <td>{{ student.name.first }}</td>
+      <td>{{ student.name.last }}</td>
+      <td>{{ averageMarks[student.id] }}</td>
+      <td class="marks" *ngFor="let marksOnDate of newSubject.marks">
+        <input 
+        type="number" 
+        [name]="'mark'+[student.id]+'_'+[marksOnDate.date]" 
+        appValidateMark
+        [(ngModel)]="marksOnDate.studentsMarks[student.id]"
+        (change)="onMarkChange(student.id, $event)">
+      </td>
+    </tr>
+  </tbody>
+</table>
+      
+
+<div>
+  <label>{{'Teacher' | translate }}:</label>
+  <input type="text" name="teacher" [(ngModel)]="newSubject.teacher" required>
+</div>  
+
+<button type="submit" (click)="saveChanges()" [disabled]="!tableForm.form.valid">{{'Save' | translate }}</button>
+</form>
+
+<ng-template appPopup></ng-template>

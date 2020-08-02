@@ -1,0 +1,24 @@
+<h1>
+  <i class="material-icons header-bookmark-icon">bookmark</i>
+  {{'Teacher journal' | translate}}
+</h1>
+
+<label>{{'Language' | translate}}: 
+  <select #selectLanguage (change)="translate.use(selectLanguage.value)">
+    <option
+    *ngFor="let language of languages"
+    [value]="language.value"
+    [selected]="language.value === translate.currentLang">
+      {{language.viewValue}}
+    </option>
+  </select>
+</label>
+
+<nav>
+  <a routerLink="/students" routerLinkActive="active">{{'Students' | translate }}</a>
+  <a routerLink="/subjects" routerLinkActive="active">{{'Subjects' | translate }}</a>
+  <a routerLink="/statistics" routerLinkActive="active">{{'Statistics' | translate }}</a>
+  <a routerLink="/export" routerLinkActive="active">{{'Export' | translate }}</a>
+</nav>
+
+<router-outlet></router-outlet>
