@@ -1,0 +1,36 @@
+@import '../../../../../styles/variables.less';
+
+table {
+    width: 90%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    padding: 10px;
+    border: 5px solid @font-color;
+    text-align: center;
+}
+
+tr:hover {
+    background-color: @basic-color;
+}
+
+thead {
+    background-color: @table-head-color;
+} 
+
+.sort-button-up,
+.sort-button-down {
+    cursor: pointer;
+    visibility: hidden;
+}
+
+td:hover .sort-button-up,
+td:hover .sort-button-down {
+    visibility: visible;
+}
+
+.sorted {
+    visibility: visible;
+}

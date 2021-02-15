@@ -1,0 +1,18 @@
+<ng-content></ng-content>
+<table *ngIf="students">
+  <thead>
+    <td *ngFor="let column of tableColumns">
+      {{column.name}}
+      <mat-icon *ngIf="!isDesc" [ngClass]="{'sorted': sortingField === column.field}" class="sort-button-down" (click)='setDescSortingField(column.field)'>arrow_drop_down</mat-icon>
+      <mat-icon *ngIf="isDesc" [ngClass]="{'sorted': sortingField === column.field}" class="sort-button-up" (click)='setAscSortingField(column.field)'>arrow_drop_up</mat-icon>
+    </td>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students">
+      <td>{{student.id }} </td>
+      <td>{{student.name.first }}</td>
+      <td>{{student.name.last }}</td>
+      <td>{{student.address | uppercase }}</td>
+    </tr>
+  </tbody>
+</table>
