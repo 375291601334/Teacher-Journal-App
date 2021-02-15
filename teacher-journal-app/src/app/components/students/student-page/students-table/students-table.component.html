@@ -1,0 +1,33 @@
+<ng-content></ng-content>
+<table *ngIf="students">
+  <thead>
+    <td>
+      Id
+      <mat-icon *ngIf="!isDesc" [ngClass]="{'sorted': sortingField === 'id'}" class="sort-button-down" (click)='setDescSortingField("id")'>arrow_drop_down</mat-icon>
+      <mat-icon *ngIf="isDesc" [ngClass]="{'sorted': sortingField === 'id'}" class="sort-button-up" (click)='setAscSortingField("id")'>arrow_drop_up</mat-icon>
+    </td>
+    <td>
+      Name 
+      <mat-icon *ngIf="!isDesc" [ngClass]="{'sorted': sortingField === 'name.first'}" class="sort-button-down" (click)='setDescSortingField("name.first")'>arrow_drop_down</mat-icon>
+      <mat-icon *ngIf="isDesc" [ngClass]="{'sorted': sortingField === 'name.first'}" class="sort-button-up" (click)='setAscSortingField("name.first")'>arrow_drop_up</mat-icon>
+    </td>
+    <td>
+      Last Name
+      <mat-icon *ngIf="!isDesc" [ngClass]="{'sorted': sortingField === 'name.last'}" class="sort-button-down" (click)='setDescSortingField("name.last")'>arrow_drop_down</mat-icon>
+      <mat-icon *ngIf="isDesc" [ngClass]="{'sorted': sortingField === 'name.last'}" class="sort-button-up" (click)='setAscSortingField("name.last")'>arrow_drop_up</mat-icon> 
+    </td>
+    <td>
+      Address
+      <mat-icon *ngIf="!isDesc" [ngClass]="{'sorted': sortingField === 'address'}" class="sort-button-down" (click)='setDescSortingField("address")'>arrow_drop_down</mat-icon>
+      <mat-icon *ngIf="isDesc" [ngClass]="{'sorted': sortingField === 'address'}" class="sort-button-up" (click)='setAscSortingField("address")'>arrow_drop_up</mat-icon>
+    </td>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students">
+      <td>{{student.id }} </td>
+      <td>{{student.name.first }}</td>
+      <td>{{student.name.last }}</td>
+      <td>{{student.address | uppercase }}</td>
+    </tr>
+  </tbody>
+</table>

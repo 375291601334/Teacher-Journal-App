@@ -1,0 +1,51 @@
+@import '../../../../styles/variables.less';
+
+form {
+    width: 80%;
+    margin: 20px auto;
+    border: 3px solid @basic-color;
+    border-radius: 20px;
+    text-align: center;
+    color: @font-color;
+}
+
+.form-group {
+    display: flex;
+}
+
+input, textarea {
+    width: 300px;
+    margin: 10px 10px 0 0;
+    padding: 5px;
+    border: 2px solid @basic-color;
+    background-color: @layout-color;
+    color: @font-color;
+}
+
+label {
+    width: 200px;
+    margin: 15px 15px 0 10px;
+    text-align: right;
+}
+
+[type="submit"] {
+    width: 100px;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 5px;
+    background: @basic-color;
+    color: @acsent-color;
+}
+
+input[disabled] {
+    color: @font-color;
+}
+
+.validation-message {
+    margin: 15px 0 0 10px;
+    color: @error-color;
+}
+
+.is-invalid {
+    border-color: @error-color;
+}

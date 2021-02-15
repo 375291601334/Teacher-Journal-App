@@ -1,0 +1,13 @@
+<h2>
+  List of subjects:
+</h2>
+
+<div class='subjects-container'>
+  <div class='subject-item' *ngFor='let subject of subjects | async '>
+    <a [routerLink]="['/subjects', subject.name]" >{{subject.name}}</a>
+  </div>
+</div>
+
+<app-button routerLink="/subjects/new"></app-button>
+
+
