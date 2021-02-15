@@ -1,0 +1,14 @@
+<div class="container">
+  <h2>Student: {{student.name.first}} {{student.name.last}}</h2>
+
+  <h3>Average Marks:</h3>
+
+  <div>
+    <div *ngFor='let subject of subjects; let i = index;'>
+      <p>{{subject.name}} ({{averageMarks[i]}}):</p>
+      <div class="progress-scale-container">
+        <div [style.width.%]="averageMarks[i]*10" [style.height.px]="30" [style.background-color]="'red'"></div>
+      </div>
+    </div>
+  </div>
+</div>

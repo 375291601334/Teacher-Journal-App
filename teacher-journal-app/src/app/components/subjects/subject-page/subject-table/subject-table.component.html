@@ -1,0 +1,31 @@
+<table>
+  <thead>
+    <td>Name</td>
+    <td>Last Name</td>
+    <td>Average Mark</td>
+    <td class='dates' *ngFor="let marksOnDate of subject.marks">
+      <input type="text" [(ngModel)]='marksOnDate.date'>
+    </td>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students; let i=index">
+      <td>{{ student.name.first }}</td>
+      <td>{{ student.name.last }}</td>
+      <td>{{ averageMarks[i] }}</td>
+      <td class='marks' *ngFor="let marksOnDate of subject.marks; let j = index;">
+        <input 
+        type="number" 
+        [(ngModel)]="marksOnDate.studentsMarks[i]"
+        (change)="onMarkChange(student.id)">
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div>
+  <label>Teacher:</label>
+  <input type="text" [(ngModel)]='subject.teacher'>
+</div>
+
+<button (click)='addColumn()'>Add column with new date</button>
+<button (click)='saveChanges()'>Save</button>

@@ -1,0 +1,43 @@
+@import '../../../styles/variables.less';
+
+.container {
+    display: flex;
+    width: 80%;
+    margin: 20px auto;
+}
+
+.left-column {
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
+    border: 3px solid @font-color;
+}
+
+.right-column {
+    flex-grow: 4;
+    min-width: 500px;
+    margin: 0;
+    padding: 0;
+    border: 3px solid @font-color;
+}
+
+.tab {
+    display: inline-block;
+    width: 46%;
+    border: 3px solid @font-color;
+}
+
+nav {
+    display: flex;
+}
+
+a {
+    flex-grow: 1;
+    color: @font-color;
+    padding: 10px 20px;
+    border: 3px solid @font-color;
+}
+
+.active {
+    color: @acsent-color;
+}

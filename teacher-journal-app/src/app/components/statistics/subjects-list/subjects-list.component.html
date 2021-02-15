@@ -1,0 +1,9 @@
+<div 
+*ngFor='let subject of subjects'
+[routerLink]="[subject.name]" 
+routerLinkActive="active">
+  <p>{{subject.name}}</p>
+</div>
+
+<router-outlet class="right-column"></router-outlet>
+
