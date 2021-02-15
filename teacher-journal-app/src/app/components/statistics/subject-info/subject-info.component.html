@@ -1,0 +1,15 @@
+<div class="container">
+  <h2>
+    {{subjectName}}
+  </h2>
+
+  <div>
+    <p>{{'Teacher' | translate }}: {{subject.teacher}}</p>
+    <p>{{'Cabiner' | translate }}: {{subject.cabiner}}</p>
+  </div>
+
+  <h3>{{'Average Mark' | translate }} ({{averageBall}}):</h3>
+  <div class="progress-scale-container">
+    <div [style.width.%]="[averageBall*10]" [style.height.px]="30" [style.background-color]="'red'"></div>
+  </div>
+</div>
